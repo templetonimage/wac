@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — WAC 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;600&family=DM+Mono&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0d0d0d; --off-black: #141414; --white: #f0ece0;
+      --text: #c8c2b2; --muted: #a09a8e; --border: #2a2a2a;
+      --accent: #d4a017; --card-bg: #1a1a1a;
+    }
+    body { background: var(--black); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.75; }
+    nav { padding: 20px 40px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: .06em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--white); font-size: 1.6rem; font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: .06em; margin-left: 0; }    .nav-back { font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--muted); text-decoration: none; letter-spacing: .06em; }
+    .nav-back:hover { color: var(--accent); }
+    .container { max-width: 640px; margin: 0 auto; padding: 64px 32px 96px; }
+    .tag { font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(212,160,23,.3); padding: 4px 12px; border-radius: 2px; display: inline-block; margin-bottom: 20px; }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 6vw, 60px); color: var(--white); letter-spacing: .04em; line-height: 1.05; margin-bottom: 12px; }
+    .subtitle { font-size: .97rem; color: var(--muted); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .form-group { margin-bottom: 24px; }
+    label { display: block; font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    input, textarea, select {
+      width: 100%; background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--white); font-family: 'DM Sans', sans-serif; font-size: .97rem;
+      padding: 14px 16px; border-radius: 3px; outline: none; transition: border-color .2s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 140px; }
+    select option { background: var(--card-bg); }
+    .btn-submit {
+      display: inline-block; background: var(--accent); color: #000;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: .1em;
+      padding: 16px 48px; border: none; border-radius: 3px; cursor: pointer;
+      transition: opacity .2s; width: 100%; text-align: center;
+    }
+    .btn-submit:hover { opacity: .88; }
+    .success-msg { display: none; background: rgba(212,160,23,.1); border: 1px solid rgba(212,160,23,.3); border-radius: 3px; padding: 20px 24px; font-size: .95rem; color: var(--white); margin-top: 24px; }
+    .alt-contact { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--muted); }
+    .alt-contact a { color: var(--accent); text-decoration: none; }
+    footer { border-top: 1px solid var(--border); padding: 32px 40px; text-align: center; font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+    @media (max-width: 520px) { nav { padding: 16px 20px; } .container { padding: 40px 20px 64px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">WAC <span>2026</span></a>
+  <a href="index.html" class="nav-back">← Back to WAC</a>
+</nav>
+
+<div class="container">
+  <span class="tag">Get in Touch</span>
+  <h1>Contact</h1>
+  <p class="subtitle">Questions about WAC 2026, the trial, or anything else — send a message and we'll get back to you.</p>
+
+  <form id="contactForm" action="https://formsubmit.co/nate@templetonimage.com" method="POST">
+    <!-- FormSubmit config -->
+    <input type="hidden" name="_subject" value="WAC 2026 — Contact Form" />
+    <input type="hidden" name="_next" value="contact.html?sent=true" />
+    <input type="hidden" name="_captcha" value="false" />
+
+    <div class="form-group">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Nate Templeton" required />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Topic</label>
+      <select id="subject" name="subject">
+        <option value="">Select a topic...</option>
+        <option value="Free Trial Question">Free Trial Question</option>
+        <option value="Round 1 Pricing">Round 1 Pricing</option>
+        <option value="Backlink Repository">Backlink Repository</option>
+        <option value="Technical Issue">Technical Issue</option>
+        <option value="Partnership / Collab">Partnership / Collab</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit">Send Message</button>
+  </form>
+
+  <div class="success-msg" id="successMsg">
+    Message sent. We'll get back to you within 1–2 business days.
+  </div>
+
+  <div class="alt-contact">
+    Prefer email directly? Reach us at <a href="/cdn-cgi/l/email-protection#376e78626568727a767e7b687f726572">nate@templetonimage.com</a><br><br>
+    Interested in SMAC, the social media accountability challenge? Visit <a href="https://www.joinsmac.com" target="_blank">joinsmac.com</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Nate Templeton · WAC 2026 &nbsp;·&nbsp; <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Show success message if redirected back after submit
+  if (window.location.search.includes('sent=true')) {
+    document.getEle
