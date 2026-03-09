@@ -918,7 +918,12 @@
       <p>There's no shortage of accountability programs. Here's how WAC compares to what else is out there.</p>
     </div>
 
-    <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+    <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:14px;">
+      <button onclick="document.getElementById('compareTable').scrollBy({left:-200,behavior:'smooth'})" style="background:transparent; border:1px solid #C9A84C; color:#C9A84C; font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.08em; padding:6px 16px; border-radius:3px; cursor:pointer;">← Prev</button>
+      <span style="font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:#a09a8e;">Swipe to Compare</span>
+      <button onclick="document.getElementById('compareTable').scrollBy({left:200,behavior:'smooth'})" style="background:transparent; border:1px solid #C9A84C; color:#C9A84C; font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.08em; padding:6px 16px; border-radius:3px; cursor:pointer;">Next →</button>
+    </div>
+    <div id="compareTable" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
     <table style="width: 100%; border-collapse: collapse; font-size: .88rem; min-width: 700px;">
       <thead>
         <tr>
@@ -941,16 +946,6 @@
           <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">5 days</td>
           <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">Ongoing</td>
           <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">Varies</td>
-        </tr>
-
-        <!-- Ongoing accountability -->
-        <tr style="background: var(--off-black);">
-          <td style="padding: 14px 16px; color: var(--text); border-bottom: 1px solid var(--border); font-weight: 500;">Ongoing accountability after program ends</td>
-          <td style="padding: 14px 16px; text-align: center; background: rgba(201,168,76,.05); border-left: 1px solid rgba(201,168,76,.25); border-right: 1px solid rgba(201,168,76,.25); border-bottom: 1px solid rgba(201,168,76,.1);"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
         </tr>
 
         <!-- Website focus -->
