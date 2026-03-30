@@ -1534,6 +1534,16 @@ textarea.form-input { resize: vertical; min-height: 80px; }
             </div>
           </label>
         </div>
+        <div class="form-group">
+          <label class="form-label">Screenshot <span style="font-size:11px;color:var(--text-muted);font-weight:400;">(optional)</span></label>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;line-height:1.5;">Required for: improving SEO titles, alt text, picture filenames, meta descriptions, fixing broken links.</div>
+          <div class="screenshot-area" id="screenshot-area" onclick="document.getElementById('screenshot-input').click()">
+            <div id="screenshot-placeholder">📷 Tap to add screenshot</div>
+            <img id="screenshot-preview" class="screenshot-preview" style="display:none;" />
+            <input type="file" id="screenshot-input" accept="image/*" style="display:none;" onchange="handleScreenshotSelect(event)" />
+          </div>
+          <button class="btn btn-sm btn-outline mt-8" id="clear-screenshot-btn" style="display:none;" onclick="clearScreenshot()">Remove screenshot</button>
+        </div>
         <button class="btn btn-gold btn-block btn-post" id="submit-update-btn" onclick="submitUpdate()" disabled style="opacity:0.45;cursor:not-allowed;" title="Submissions open April 1">Submit Update <span style="font-size:11px;font-weight:500;opacity:0.8;">(Opens April 1)</span></button>
       </div>
 
@@ -1553,7 +1563,6 @@ textarea.form-input { resize: vertical; min-height: 80px; }
               <button class="eng-type-btn" onclick="selectEngType(this,'Commented')">💬 Commented</button>
               <button class="eng-type-btn" onclick="selectEngType(this,'Shared')">📤 Shared</button>
               <button class="eng-type-btn" onclick="selectEngType(this,'Left Feedback')">📝 Left Feedback</button>
-              <button class="eng-type-btn" onclick="selectEngType(this,'Reviewed')">⭐ Reviewed</button>
             </div>
           </div>
           <div class="form-group">
@@ -1561,7 +1570,7 @@ textarea.form-input { resize: vertical; min-height: 80px; }
             <textarea id="eng-note" class="form-input" placeholder="Describe your engagement..."></textarea>
           </div>
           <div class="form-group">
-            <label class="form-label">Screenshot (optional, +2 pts)</label>
+            <label class="form-label">Screenshot <span style="color:var(--danger);font-size:11px;font-weight:600;">required</span></label>
             <div class="eng-screenshot-area" id="eng-screenshot-area" onclick="document.getElementById('eng-screenshot-input').click()">
               <div id="eng-screenshot-placeholder">📷 Tap to add screenshot</div>
               <img id="eng-screenshot-preview" class="eng-screenshot-preview" style="display:none;" />
@@ -3174,6 +3183,7 @@ async function submitUpdate() {
       note,
       format: _selectedFormat || "Static",
       challengeCompleted,
+      hasScreenshot: !!_screenshotData,
       pts,
       isLate,
       timestamp: Date.now()
@@ -3198,6 +3208,7 @@ async function submitUpdate() {
     document.querySelectorAll("#format-btns .format-btn").forEach(b => b.classList.remove("selected"));
     const _challengeEl = document.getElementById("submit-challenge");
     if (_challengeEl) _challengeEl.checked = false;
+    clearScreenshot();
     showToast(`Update submitted! +${pts} pts`);
     loadMySubmissions();
     updatePtsPreview();
@@ -3231,6 +3242,7 @@ async function submitEngagement() {
   const url = document.getElementById("eng-url").value.trim();
   if (!url) { showToast("Enter the member's website URL."); return; }
   if (!_selectedEngType) { showToast("Select engagement type."); return; }
+  if (!_engScreenshotData) { showToast("A screenshot is required."); return; }
   if (isRoundOver()) { showToast("Round has ended."); return; }
 
   const count = await getWeeklyEngCount();
