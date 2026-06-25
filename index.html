@@ -670,6 +670,100 @@
       .ramp-table { font-size: .82rem; }
       .ramp-table th, .ramp-table td { padding: 12px; }
     }
+
+
+    /* WAITLIST MODAL */
+    .wl-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.78);
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .wl-overlay.open { display: flex; }
+    .wl-box {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-top: 3px solid var(--accent);
+      border-radius: 3px;
+      padding: 48px 44px 40px;
+      max-width: 480px;
+      width: 100%;
+      position: relative;
+    }
+    .wl-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none; border: none;
+      color: var(--muted); font-size: 1.4rem;
+      cursor: pointer; line-height: 1;
+    }
+    .wl-close:hover { color: var(--white); }
+    .wl-label {
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .wl-box h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      letter-spacing: .03em; line-height: .95;
+      color: var(--white); margin-bottom: 10px;
+    }
+    .wl-box p {
+      font-size: .92rem; color: var(--muted);
+      line-height: 1.6; margin-bottom: 28px;
+    }
+    .wl-field {
+      width: 100%;
+      background: #0d0d0d;
+      border: 1px solid #2a2a2a;
+      border-radius: 2px;
+      padding: 14px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem; color: var(--white);
+      margin-bottom: 12px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .wl-field:focus { border-color: var(--accent); }
+    .wl-field::placeholder { color: #555; }
+    .wl-submit {
+      width: 100%;
+      background: var(--accent);
+      color: #0d0d0d;
+      border: none;
+      border-radius: 2px;
+      padding: 16px;
+      font-family: 'DM Mono', monospace;
+      font-size: .85rem; letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background .2s, transform .15s;
+      margin-top: 4px;
+    }
+    .wl-submit:hover { background: var(--accent-dim); transform: translateY(-1px); }
+    .wl-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .wl-note {
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem; letter-spacing: .04em;
+      color: #555; margin-top: 14px; margin-bottom: 0;
+    }
+    .wl-success { display: none; text-align: center; padding: 20px 0; }
+    .wl-success-icon { font-size: 2.4rem; margin-bottom: 12px; }
+    .wl-success h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; letter-spacing: .04em;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .wl-success p { font-size: .9rem; color: var(--muted); margin-bottom: 0; }
+    @media (max-width: 520px) { .wl-box { padding: 36px 24px 28px; } }
   </style>
 </head>
 <body>
@@ -685,7 +779,7 @@
   </div>
   <div style="display:flex; align-items:center; gap:12px;">
     <a href="https://app.joinwac.com" class="nav-login" target="_blank" rel="noopener">Member Login</a>
-    <a href="https://buy.stripe.com/4gMcN585JgrBfyegJzbo402" class="nav-cta" target="_blank" rel="noopener">Buy Round 1</a>
+    <button class="nav-cta wl-trigger">Join Round 2 Waitlist</button>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span>
       <span></span>
@@ -706,15 +800,15 @@
 <!-- TICKER -->
 <div class="ticker-wrap" aria-hidden="true">
   <div class="ticker-track">
-    <span>Only 2 Early Bird Spots Left</span><span class="ticker-dot"></span>
-    <span>Round 1: May–July 2026</span><span class="ticker-dot"></span>
+    <span>Round 2 Opens August 1, 2026</span><span class="ticker-dot"></span>
+    <span>Round 1 Underway: May–July 2026</span><span class="ticker-dot"></span>
     <span>WAC All-Star Cash Giveaway</span><span class="ticker-dot"></span>
     <span>4 Rounds Per Year</span><span class="ticker-dot"></span>
     <span>Website Accountability Challenge</span><span class="ticker-dot"></span>
     <span>90 Days. Weekly Edits. Real Progress.</span><span class="ticker-dot"></span>
     <span>Solopreneurs Only</span><span class="ticker-dot"></span>
-    <span>Only 2 Early Bird Spots Left</span><span class="ticker-dot"></span>
-    <span>Round 1: May–July 2026</span><span class="ticker-dot"></span>
+    <span>Round 2 Opens August 1, 2026</span><span class="ticker-dot"></span>
+    <span>Round 1 Underway: May–July 2026</span><span class="ticker-dot"></span>
     <span>WAC All-Star Cash Giveaway</span><span class="ticker-dot"></span>
     <span>4 Rounds Per Year</span><span class="ticker-dot"></span>
     <span>Website Accountability Challenge</span><span class="ticker-dot"></span>
@@ -725,14 +819,14 @@
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-kicker fade-up"><span class="live-dot"></span> Only 2 Early Bird Spots Left</p>
+  <p class="hero-kicker fade-up"><span class="live-dot"></span> Round 1 Is Underway — Round 2 Opens August 1</p>
   <h1 class="fade-up delay-1">Your Website Won't<br>Update <em>Itself.</em></h1>
   <p class="hero-sub fade-up delay-2">WAC is a 90-day, community based accountability challenge that keeps solopreneurs actually updating their websites — with proof, support, and cash prizes on the line.</p>
   <div class="hero-actions fade-up delay-3">
-    <a href="https://buy.stripe.com/4gMcN585JgrBfyegJzbo402" class="btn-primary">Buy Round 1 — Early Bird</a>
+    <button class="btn-primary wl-trigger">Join the Round 2 Waitlist</button>
     <a href="#how-it-works" class="btn-ghost">See How It Works</a>
   </div>
-  <p class="hero-note fade-up delay-4">Only 2 Early Bird spots left &nbsp;·&nbsp; Round 1 kicks off May 1, 2026</p>
+  <p class="hero-note fade-up delay-4">Round 2 opens August 1, 2026 &nbsp;·&nbsp; Round 1 runs May–July 2026</p>
 </section>
 
 <!-- STAT BAR -->
@@ -995,7 +1089,7 @@
       <span class="tag">The reward</span>
       <h2>Earn WAC All-Star Status</h2>
       <p>Hit every weekly minimum and you earn WAC All-Star status plus a cash prize. And even if you don't hit every requirement, finishing the round enters you into a separate random cash drawing. The bigger the membership, the bigger both prizes get.</p>
-      <a href="https://buy.stripe.com/4gMcN585JgrBfyegJzbo402" class="btn-primary">Buy Round 1 — Early Bird</a>
+      <button class="btn-primary wl-trigger">Join the Round 2 Waitlist</button>
       <div class="allstar-meta">
         <span>Zero misses required</span>
         <span>Two cash prizes per round</span>
@@ -1163,15 +1257,15 @@
     <div class="section-header">
       <span class="tag">How Much Is It?</span>
       <h2>Simple, Upfront Pricing</h2>
-      <p>Lock in Early Bird pricing before the last 2 spots are gone.</p>
+      <p>Round 1 is underway. Get on the waitlist for Round 2 — opening August 1, 2026.</p>
     </div>
-    <div class="pricing-grid">
+    <div class="pricing-grid" style="max-width:480px; margin:0 auto;">
       <div class="pricing-card featured">
-        <div class="pricing-badge-top">EARLY BIRD</div>
-        <div class="price-round">Round 1 — May–July 2026</div>
-        <div class="price-amt"><sup>$</sup>45</div>
-        <div class="price-note">One-time round fee &nbsp;·&nbsp; $15/mo</div>
-        <div style="display:inline-block; margin-top:8px; margin-bottom:16px; padding:3px 10px; border:1px solid #C9A84C; color:#C9A84C; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;">Only 2 Early Bird spots left</div>
+        <div class="pricing-badge-top">ROUND 2</div>
+        <div class="price-round">Round 2 — Aug–Oct 2026</div>
+        <div class="price-amt"><sup>$</sup>55</div>
+        <div class="price-note">One-time round fee &nbsp;·&nbsp; ~$18/mo</div>
+        <div style="display:inline-block; margin-top:8px; margin-bottom:16px; padding:3px 10px; border:1px solid #C9A84C; color:#C9A84C; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;">Waitlist opens now</div>
         <ul class="price-features">
           <li>Full 90-day challenge access</li>
           <li>Weekly edit tracking + proof submission</li>
@@ -1185,29 +1279,8 @@
           <li>All-Star cash prize eligibility</li>
           <li>Random finisher prize drawing</li>
         </ul>
-        <a href="https://buy.stripe.com/4gMcN585JgrBfyegJzbo402" class="btn-primary" style="width:100%; text-align:center; display:block;">Buy Round 1 — Early Bird</a>
-        <p style="text-align:center; font-family:'DM Mono',monospace; font-size:0.72rem; color:#a09a8e; margin-top:10px; letter-spacing:0.04em;">Platform launches April 2026. Round 1 begins May 1, 2026.</p>
-      </div>
-      <div class="pricing-card" style="opacity: 0.5; pointer-events: none;">
-        <div class="pricing-badge-top" style="background: #444; color: #888;">NEXT RATE</div>
-        <div class="price-round">Round 1 — After Early Bird Sells Out</div>
-        <div class="price-amt" style="color: #888;"><sup>$</sup>55</div>
-        <div class="price-note">One-time round fee &nbsp;·&nbsp; ~$18/mo</div>
-        <div style="display:inline-block; margin-top:8px; margin-bottom:16px; padding:3px 10px; border:1px solid #444; color:#666; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;">Available after Early Bird spots fill</div>
-        <ul class="price-features" style="color: #666;">
-          <li>Full 90-day challenge access</li>
-          <li>Weekly edit tracking + proof submission</li>
-          <li>WAC community access</li>
-          <li>Peer review from fellow members</li>
-          <li>Backlink Repository access</li>
-          <li>Monthly website tip &amp; resource drop</li>
-          <li>SEO &amp; copy improvement checklist</li>
-          <li>Member directory &amp; spotlight eligibility</li>
-          <li>End-of-round website audit checklist</li>
-          <li>All-Star cash prize eligibility</li>
-          <li>Random finisher prize drawing</li>
-        </ul>
-        <div style="width:100%; text-align:center; display:block; padding:16px; background:#2a2a2a; color:#555; font-family:'DM Mono',monospace; font-size:0.85rem; border-radius:3px; letter-spacing:0.04em;">Not Yet Available</div>
+        <button class="btn-primary wl-trigger" style="width:100%; text-align:center; display:block; cursor:pointer;">Join the Round 2 Waitlist</button>
+        <p style="text-align:center; font-family:'DM Mono',monospace; font-size:0.72rem; color:#a09a8e; margin-top:10px; letter-spacing:0.04em;">Round 2 opens August 1, 2026. Waitlist members notified first.</p>
       </div>
     </div>
   </div>
@@ -1252,10 +1325,9 @@
 <!-- FINAL CTA -->
 <section class="final-cta">
   <h2>Stop Letting Your<br>Site Sit Still.</h2>
-  <p>Only 2 Early Bird spots remain. Lock in at $45 before they're gone and Round 1 goes to $55.</p>
-  <!-- SWAP href -->
-  <a href="https://buy.stripe.com/4gMcN585JgrBfyegJzbo402" class="btn-dark">Buy Round 1 — Early Bird</a>
-  <p class="final-note">Only 2 Early Bird spots remain &nbsp;·&nbsp; Round 1 kicks off May 1, 2026</p>
+  <p>Round 1 is already underway. Get on the waitlist now and be first in line when Round 2 opens August 1, 2026.</p>
+  <button class="btn-dark wl-trigger">Join the Round 2 Waitlist</button>
+  <p class="final-note">Round 2 opens August 1, 2026 &nbsp;·&nbsp; Round 1 runs May–July 2026</p>
 </section>
 
 <!-- FOOTER -->
@@ -1267,6 +1339,28 @@
     Also by Nate: <a href="https://www.joinsmac.com">SMAC — Social Media Accountability Challenge →</a>
   </div>
 </footer>
+
+<!-- WAITLIST MODAL -->
+<div class="wl-overlay" id="wlOverlay" role="dialog" aria-modal="true" aria-label="Join Round 2 Waitlist">
+  <div class="wl-box">
+    <button class="wl-close" id="wlClose" aria-label="Close">&times;</button>
+    <div id="wlForm">
+      <p class="wl-label">Round 2 — Opens August 1, 2026</p>
+      <h2>Get on the<br>Waitlist.</h2>
+      <p>Be first to know when Round 2 enrollment opens. No spam, just your spot in line.</p>
+      <input class="wl-field" id="wlName" type="text" placeholder="First name" autocomplete="given-name" />
+      <input class="wl-field" id="wlEmail" type="email" placeholder="Email address" autocomplete="email" />
+      <button class="wl-submit" id="wlSubmit">Reserve My Spot &rarr;</button>
+      <p class="wl-note">Round 2 opens August 1, 2026 &nbsp;&middot;&nbsp; No spam, ever.</p>
+    </div>
+    <div class="wl-success" id="wlSuccess">
+      <div class="wl-success-icon">&#10003;</div>
+      <h3>You're on the List.</h3>
+      <p>We'll email you when Round 2 enrollment opens August 1, 2026.</p>
+    </div>
+  </div>
+</div>
+
 
 <script>
   // Hamburger menu
@@ -1309,6 +1403,61 @@
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity .5s ease, transform .5s ease';
     observer.observe(el);
+  });
+  // Waitlist Modal
+  const wlOverlay = document.getElementById('wlOverlay');
+  const wlClose   = document.getElementById('wlClose');
+  const wlSubmit  = document.getElementById('wlSubmit');
+  const wlForm    = document.getElementById('wlForm');
+  const wlSuccess = document.getElementById('wlSuccess');
+
+  function openWaitlist() {
+    wlOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('wlName').focus();
+  }
+  function closeWaitlist() {
+    wlOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.wl-trigger').forEach(btn => {
+    btn.addEventListener('click', openWaitlist);
+  });
+  wlClose.addEventListener('click', closeWaitlist);
+  wlOverlay.addEventListener('click', e => { if (e.target === wlOverlay) closeWaitlist(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeWaitlist(); });
+
+  wlSubmit.addEventListener('click', async () => {
+    const name  = document.getElementById('wlName').value.trim();
+    const email = document.getElementById('wlEmail').value.trim();
+    if (!name || !email) {
+      alert('Please enter your name and email.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    wlSubmit.disabled = true;
+    wlSubmit.textContent = 'Submitting...';
+    try {
+      const res = await fetch('https://formspree.io/f/mqevpljw', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email })
+      });
+      if (res.ok) {
+        wlForm.style.display = 'none';
+        wlSuccess.style.display = 'block';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      wlSubmit.disabled = false;
+      wlSubmit.textContent = 'Reserve My Spot →';
+      alert('Something went wrong. Please try again.');
+    }
   });
 </script>
 </body>
