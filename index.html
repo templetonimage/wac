@@ -8,11 +8,11 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://templetonimage.github.io/wac/wac-stripe-image-2.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WAC — Website Accountability Challenge</title>
+  <title>WAC, Website Accountability Challenge</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="icon-512.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -23,15 +23,20 @@
       --muted:       #a09a8e;
       --text:        #d4d0c8;
       --white:       #f0ece0;
+      --cream:       #f7f3ea;
+      --cream-white: #fdfbf6;
+      --ink:         #17140f;
+      --ink-muted:   #6b6558;
+      --light-border:#e8e2d4;
       --accent:      #C9A84C;
       --accent-dim:  #b8860b;
       --accent-bg:   rgba(201,168,76,.08);
     }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--black);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
       font-size: 17px;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
@@ -48,17 +53,17 @@
     .accent { color: var(--accent); }
     .tag {
       display: inline-block;
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: .72rem;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--accent);
       border: 1px solid var(--accent);
       padding: 4px 12px;
-      border-radius: 2px;
+      border-radius: 8px;
       margin-bottom: 20px;
     }
-    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+    .divider { border: none; border-top: 1px solid var(--light-border); margin: 0; }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -67,11 +72,6 @@
       0%, 100% { opacity: 1; transform: scale(1); }
       50%       { opacity: .5; transform: scale(.7); }
     }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .ticker-track { will-change: transform; }
     .fade-up { animation: fadeUp .7s ease both; }
     .delay-1 { animation-delay: .1s; }
     .delay-2 { animation-delay: .22s; }
@@ -88,76 +88,47 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: 1.6rem;
       letter-spacing: .06em;
       color: var(--accent);
       text-decoration: none;
     }
-    .nav-logo span { color: var(--white); font-size: 1.6rem; font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: .06em; margin-left: 0; }
+    .nav-logo span { color: var(--white); font-size: 1.6rem; font-family: 'Sora', sans-serif; font-weight: 400; letter-spacing: .06em; margin-left: 0; }
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-link {
-      font-family: 'DM Mono', monospace; font-size: .75rem; letter-spacing: .08em;
+      font-family: 'Space Mono', monospace; font-size: .75rem; letter-spacing: .08em;
       text-transform: uppercase; color: var(--muted); text-decoration: none;
       transition: color .2s;
     }
     .nav-link:hover { color: var(--white); }
     .nav-cta {
-      background: var(--accent);
-      color: var(--black);
+      background: var(--black);
+      color: var(--white);
       font-weight: 600;
       font-size: .85rem;
       letter-spacing: .04em;
       padding: 9px 20px;
-      border: none;
-      border-radius: 3px;
+      border: 1px solid var(--black);
+      border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
       transition: background .2s, transform .15s;
     }
-    .nav-cta:hover { background: var(--accent-dim); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
     .nav-login {
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: .75rem;
       letter-spacing: .08em;
       text-transform: uppercase;
       color: var(--accent);
       border: 1px solid var(--accent);
       padding: 7px 14px;
-      border-radius: 3px;
+      border-radius: 8px;
       text-decoration: none;
       transition: background .2s, color .2s;
     }
     .nav-login:hover { background: var(--accent); color: var(--black); }
-
-    /* TICKER */
-    .ticker-wrap { background: var(--accent); overflow: hidden; padding: 8px 0; }
-    .ticker-track {
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      animation: ticker 30s linear infinite;
-      width: max-content;
-    }
-    .ticker-track span {
-      font-family: 'DM Mono', monospace;
-      font-size: .75rem;
-      font-weight: 500;
-      letter-spacing: .08em;
-      color: var(--black);
-      padding: 0 32px;
-    }
-    .ticker-dot {
-      display: inline-block;
-      width: 5px; height: 5px;
-      background: var(--black);
-      border-radius: 50%;
-      vertical-align: middle;
-      position: relative;
-      top: -1px;
-      margin-right: 32px;
-      opacity: .4;
-    }
 
     /* HERO */
     .hero {
@@ -171,20 +142,21 @@
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: clamp(280px, 55vw, 680px);
       color: rgba(201,168,76,.07);
       pointer-events: none;
       white-space: nowrap;
       letter-spacing: .04em;
       line-height: 1;
+      z-index: 0;
     }
     .hero-kicker {
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: .78rem;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--ink-muted);
       margin-bottom: 28px;
     }
     .live-dot {
@@ -197,67 +169,93 @@
       vertical-align: middle;
     }
     .hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(52px, 9vw, 100px);
-      line-height: .96;
-      letter-spacing: .02em;
-      color: var(--white);
-      margin-bottom: 28px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
     }
-    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero h1 em { font-style: normal; color: var(--accent-dim); }
     .hero-sub {
       font-size: 1.15rem;
       font-weight: 300;
-      color: var(--text);
+      color: var(--ink-muted);
       max-width: 560px;
       margin: 0 auto 44px;
       line-height: 1.7;
     }
-    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-sub strong { font-weight: 600; color: var(--ink); }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+    /* HERO PRODUCT UI PREVIEW (placeholder mockup, swap for a real dashboard screenshot later) */
+    .hero-ui { max-width: 780px; margin: 0 auto; position: relative; z-index: 1; display: flex; justify-content: center; padding-bottom: 40px; }
+    .ui-panel {
+      background: var(--cream-white); border: 1px solid var(--light-border); border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(23,20,15,.12); width: 100%; max-width: 560px; padding: 20px; text-align: left;
+    }
+    .ui-panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .ui-panel-title { font-family: 'Sora', sans-serif; font-weight: 600; font-size: .95rem; color: var(--ink); }
+    .ui-tag { font-family: 'Space Mono', monospace; font-size: .68rem; background: var(--accent-bg); color: var(--accent-dim); padding: 3px 8px; border-radius: 6px; }
+    .ui-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-top: 1px solid var(--light-border); font-size: .85rem; color: var(--ink); }
+    .ui-row:first-of-type { border-top: none; }
+    .ui-pts { font-family: 'Space Mono', monospace; color: var(--accent-dim); font-weight: 700; }
+    .float-card {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      background: var(--black); color: var(--white); border-radius: 12px;
+      padding: 14px 18px; box-shadow: 0 12px 32px rgba(23,20,15,.22);
+      font-family: 'Space Mono', monospace; font-size: .72rem; display: none;
+      text-align: center; white-space: nowrap;
+    }
+    .float-card b { color: var(--accent); font-size: 1.1rem; display: block; }
+    @media (min-width: 760px) { .float-card { display: block; } }
     .btn-primary {
-      background: var(--accent);
-      color: var(--black);
-      font-weight: 700;
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      font-weight: 600;
       font-size: 1rem;
       letter-spacing: .03em;
       padding: 16px 36px;
-      border: none;
-      border-radius: 3px;
+      border: 1px solid var(--black);
+      border-radius: 10px;
       cursor: pointer;
       text-decoration: none;
-      transition: background .2s, transform .15s, box-shadow .2s;
+      transition: background .2s, color .2s, transform .15s, box-shadow .2s;
     }
     .btn-primary:hover {
-      background: var(--accent-dim);
+      background: var(--accent);
+      color: var(--black);
+      border-color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(200,245,66,.25);
+      box-shadow: 0 8px 32px rgba(201,168,76,.25);
     }
     .btn-ghost {
       background: transparent;
-      color: var(--text);
+      color: var(--ink-muted);
       font-weight: 500;
       font-size: 1rem;
       padding: 16px 28px;
-      border: 1px solid var(--border);
-      border-radius: 3px;
+      border: 1px solid var(--light-border);
+      border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
       transition: border-color .2s, color .2s;
     }
-    .btn-ghost:hover { border-color: var(--text); color: var(--white); }
+    .btn-ghost:hover { border-color: var(--ink-muted); color: var(--ink); }
     .hero-note {
       margin-top: 20px;
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: .73rem;
-      color: var(--muted);
+      color: var(--ink-muted);
       letter-spacing: .06em;
     }
 
     /* STAT BAR */
     .stat-bar {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--off-black);
+      border-top: 1px solid var(--light-border);
+      border-bottom: 1px solid var(--light-border);
+      background: var(--cream-white);
       padding: 36px 24px;
     }
     .stat-bar-inner {
@@ -268,26 +266,27 @@
       text-align: center;
     }
     .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: 3rem;
       color: var(--accent);
       line-height: 1;
       display: block;
     }
-    .stat-label { font-size: .82rem; color: var(--muted); letter-spacing: .05em; margin-top: 4px; }
+    .stat-label { font-size: .82rem; color: var(--ink-muted); letter-spacing: .05em; margin-top: 4px; }
 
     /* SECTION */
     .section { padding: 88px 24px; }
     .section-header { text-align: center; margin-bottom: 56px; }
     .section-header h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(38px, 6vw, 62px);
-      color: var(--white);
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: clamp(32px, 5vw, 54px);
+      color: var(--ink);
       letter-spacing: .03em;
       line-height: 1.05;
       margin-bottom: 14px;
     }
-    .section-header p { font-size: 1.05rem; color: var(--text); max-width: 520px; margin: 0 auto; font-weight: 300; }
+    .section-header p { font-size: 1.05rem; color: var(--ink-muted); max-width: 520px; margin: 0 auto; font-weight: 300; }
 
     /* PROBLEM */
     .problem-grid {
@@ -295,19 +294,46 @@
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2px;
       background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 4px;
+      border: 1px solid var(--light-border);
+      border-radius: 10px;
       overflow: hidden;
     }
     .problem-card {
       background: var(--off-black);
+      border: 1px solid var(--border);
       padding: 32px 28px;
-      transition: background .2s;
+      border-radius: 12px;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
-    .problem-card:hover { background: var(--card-bg); }
-    .problem-icon { font-size: 1.5rem; margin-bottom: 14px; display: block; }
+    .problem-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(201,168,76,.15);
+    }
+    .backlink-card {
+      background: var(--cream-white); border: 1px solid var(--light-border); border-radius: 12px;
+      padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px;
+      box-shadow: 0 4px 16px rgba(23,20,15,.05);
+      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .backlink-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(23,20,15,.08);
+    }
+    .problem-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(201,168,76,.12); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .problem-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .problem-card h3 { font-weight: 600; font-size: 1rem; color: var(--white); margin-bottom: 8px; }
     .problem-card p { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+    /* SECTION-DARK: punctuation sections (Problem) sit on black, unlike default cream sections */
+    .section-dark { background: var(--black); }
+    .section-dark .section-header h2 { color: var(--white); }
+    .section-dark .section-header p { color: var(--text); }
+    .section-dark .tag { color: var(--accent); background: rgba(201,168,76,.12); }
 
     /* GUIDE */
     .guide-section { background: var(--off-black); }
@@ -320,14 +346,15 @@
     }
     @media (max-width: 680px) { .guide-inner { grid-template-columns: 1fr; gap: 40px; } }
     .guide-img-box {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
+      background: var(--cream-white);
+      border: 1px solid var(--light-border);
+      box-shadow: 0 4px 16px rgba(23,20,15,.06);
+      border-radius: 10px;
       aspect-ratio: 4/5;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: .78rem;
-      color: var(--muted);
+      color: var(--ink-muted);
       letter-spacing: .08em;
       text-align: center;
       overflow: hidden;
@@ -344,11 +371,12 @@
       left: -12px; top: 32px;
       width: 4px; height: 60px;
       background: var(--accent);
-      border-radius: 2px;
+      border-radius: 8px;
     }
     .guide-text h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(34px, 5vw, 54px);
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: clamp(30px, 4.5vw, 46px);
       color: var(--white);
       letter-spacing: .03em;
       line-height: 1.05;
@@ -357,14 +385,15 @@
     .guide-text p { font-weight: 300; color: var(--text); margin-bottom: 16px; font-size: 1rem; }
     .cred-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
     .cred-list li { display: flex; align-items: flex-start; gap: 12px; font-size: .92rem; color: var(--text); }
-    .cred-list li::before { content: '→'; color: var(--accent); font-family: 'DM Mono', monospace; flex-shrink: 0; margin-top: 2px; }
+    .cred-list li::before { content: '→'; color: var(--accent); font-family: 'Space Mono', monospace; flex-shrink: 0; margin-top: 2px; }
 
     /* PLAN */
     .plan-steps { display: flex; flex-direction: column; gap: 2px; max-width: 700px; margin: 0 auto; }
     .plan-step {
-      background: var(--off-black);
-      border: 1px solid var(--border);
-      border-radius: 4px;
+      background: var(--cream-white);
+      border: 1px solid var(--light-border);
+      box-shadow: 0 4px 16px rgba(23,20,15,.05);
+      border-radius: 10px;
       padding: 28px 32px;
       display: grid;
       grid-template-columns: 56px 1fr;
@@ -372,35 +401,35 @@
       align-items: start;
       transition: border-color .2s, background .2s;
     }
-    .plan-step:hover { border-color: var(--accent); background: var(--card-bg); }
-    .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: var(--accent); line-height: 1; }
-    .step-body h3 { font-weight: 600; color: var(--white); font-size: 1.05rem; margin-bottom: 6px; }
-    .step-body p { font-size: .9rem; color: var(--muted); }
+    .plan-step:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .step-num { font-family: 'Sora', sans-serif; font-size: 2.6rem; color: var(--accent); line-height: 1; }
+    .step-body h3 { font-weight: 600; color: var(--ink); font-size: 1.05rem; margin-bottom: 6px; }
+    .step-body p { font-size: .9rem; color: var(--ink-muted); }
 
     /* RAMP TABLE */
     .ramp-table { width: 100%; max-width: 680px; margin: 48px auto 0; border-collapse: collapse; font-size: .92rem; }
     .ramp-table th {
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: .72rem;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--ink-muted);
       padding: 12px 20px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--light-border);
       text-align: left;
     }
-    .ramp-table td { padding: 16px 20px; border-bottom: 1px solid var(--border); color: var(--text); }
+    .ramp-table td { padding: 16px 20px; border-bottom: 1px solid var(--light-border); color: var(--ink-muted); }
     .ramp-table tr:last-child td { border-bottom: none; }
-    .ramp-table tr:hover td { background: var(--off-black); }
+    .ramp-table tr:hover td { background: var(--cream-white); }
     .ramp-badge {
       display: inline-flex; align-items: center; gap: 6px;
       background: var(--accent-bg);
-      border: 1px solid rgba(200,245,66,.2);
+      border: 1px solid rgba(201,168,76,.2);
       color: var(--accent);
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: .75rem;
       padding: 4px 10px;
-      border-radius: 2px;
+      border-radius: 8px;
     }
 
     /* WHAT COUNTS */
@@ -411,32 +440,36 @@
       max-width: 900px; margin: 0 auto;
     }
     .edit-item {
-      background: var(--off-black);
-      border: 1px solid var(--border);
-      border-radius: 4px;
+      background: var(--cream-white);
+      border: 1px solid var(--light-border);
+      border-radius: 10px;
       padding: 18px 20px;
       display: flex; align-items: flex-start; gap: 12px;
-      transition: border-color .2s;
+      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
     }
-    .edit-item:hover { border-color: rgba(200,245,66,.35); }
+    .edit-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(23,20,15,.08);
+    }
     .edit-check {
       width: 20px; height: 20px;
       border: 2px solid var(--accent);
-      border-radius: 2px;
+      border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0; margin-top: 1px;
       color: var(--accent);
       font-size: .7rem; font-weight: 700;
     }
-    .edit-item span { font-size: .92rem; color: var(--text); line-height: 1.5; }
+    .edit-item span { font-size: .92rem; color: var(--ink); line-height: 1.5; }
 
     /* ALL-STAR */
     .allstar-section { background: var(--off-black); }
     .allstar-box {
       max-width: 720px; margin: 0 auto;
-      border: 1px solid rgba(200,245,66,.3);
-      border-radius: 6px;
-      background: linear-gradient(135deg, rgba(200,245,66,.06) 0%, transparent 60%);
+      border: 1px solid rgba(201,168,76,.3);
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(201,168,76,.06) 0%, transparent 60%);
       padding: 52px 48px;
       text-align: center;
       position: relative;
@@ -446,11 +479,11 @@
       content: '★';
       position: absolute; top: -20px; right: 24px;
       font-size: 140px;
-      color: rgba(200,245,66,.04);
+      color: rgba(201,168,76,.04);
       pointer-events: none;
     }
     .allstar-box h2 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: clamp(40px, 7vw, 72px);
       color: var(--accent);
       letter-spacing: .04em;
@@ -467,7 +500,7 @@
     }
     .allstar-meta {
       display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: .78rem;
       color: var(--muted);
       letter-spacing: .06em;
@@ -485,78 +518,90 @@
       max-width: 720px; margin: 0 auto;
     }
     .pricing-card {
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--off-black);
+      border: 1px solid var(--light-border);
+      border-radius: 12px;
+      background: var(--cream-white);
+      box-shadow: 0 4px 16px rgba(23,20,15,.05);
       padding: 36px 32px;
       position: relative;
       transition: border-color .2s;
     }
     .pricing-card.featured {
       border-color: var(--accent);
-      background: linear-gradient(160deg, rgba(200,245,66,.06) 0%, var(--off-black) 50%);
+      background: linear-gradient(160deg, rgba(201,168,76,.08) 0%, var(--cream-white) 60%);
     }
     .pricing-badge-top {
       position: absolute; top: -13px; left: 50%;
       transform: translateX(-50%);
       background: var(--accent);
       color: var(--black);
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: .68rem;
       letter-spacing: .1em;
       font-weight: 500;
       padding: 4px 14px;
-      border-radius: 2px;
+      border-radius: 8px;
       white-space: nowrap;
     }
-    .price-round { font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .price-amt { font-family: 'Bebas Neue', sans-serif; font-size: 3.8rem; color: var(--white); line-height: 1; margin-bottom: 4px; }
+    .price-round { font-family: 'Space Mono', monospace; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px; }
+    .price-amt { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 3.8rem; color: var(--ink); line-height: 1; margin-bottom: 4px; }
     .price-amt sup { font-size: 1.6rem; vertical-align: top; margin-top: 10px; margin-right: 2px; }
-    .price-note { font-size: .82rem; color: var(--muted); margin-bottom: 28px; }
+    .price-note { font-size: .82rem; color: var(--ink-muted); margin-bottom: 28px; }
     .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
-    .price-features li { font-size: .9rem; color: var(--text); display: flex; align-items: flex-start; gap: 10px; }
+    .price-features li { font-size: .9rem; color: var(--ink); display: flex; align-items: flex-start; gap: 10px; }
     .price-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
 
     /* FAQ */
     .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 2px; }
-    .faq-item { background: var(--off-black); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .faq-item { background: var(--cream-white); border: 1px solid var(--light-border); border-radius: 8px; overflow: hidden; }
     .faq-q {
       padding: 20px 24px;
       cursor: pointer;
-      font-weight: 500; color: var(--white); font-size: .97rem;
+      font-weight: 500; color: var(--ink); font-size: .97rem;
       display: flex; justify-content: space-between; align-items: center; gap: 16px;
       user-select: none;
       transition: background .2s;
     }
-    .faq-q:hover { background: var(--card-bg); }
+    .faq-q:hover { background: var(--cream); }
     .faq-q::after { content: '+'; color: var(--accent); font-size: 1.3rem; flex-shrink: 0; transition: transform .2s; }
     .faq-item.open .faq-q::after { transform: rotate(45deg); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; font-size: .92rem; color: var(--muted); line-height: 1.7; padding: 0 24px; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; font-size: .92rem; color: var(--ink-muted); line-height: 1.7; padding: 0 24px; }
     .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
 
     /* FINAL CTA */
     .final-cta {
-      background: var(--accent);
+      background: var(--cream);
       padding: 100px 24px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    .final-cta::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(90deg, transparent 0px, transparent 60px, rgba(0,0,0,.05) 60px, rgba(0,0,0,.05) 61px);
+    .final-cta::after {
+      content: 'WAC';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(200px, 45vw, 520px);
+      color: rgba(201,168,76,.08);
+      pointer-events: none;
+      white-space: nowrap;
+      letter-spacing: .04em;
+      line-height: 1;
+      z-index: 0;
     }
     .final-cta h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(42px, 8vw, 88px);
-      color: var(--black);
-      letter-spacing: .02em;
-      line-height: .97;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: clamp(36px, 6.5vw, 68px);
+      color: var(--ink);
+      letter-spacing: -.02em;
+      line-height: 1.05;
       margin-bottom: 20px;
       position: relative;
+      z-index: 1;
     }
-    .final-cta p { font-size: 1.1rem; color: rgba(0,0,0,.6); max-width: 480px; margin: 0 auto 40px; position: relative; }
+    .final-cta p { font-size: 1.1rem; color: var(--ink-muted); max-width: 480px; margin: 0 auto 24px; position: relative; z-index: 1; }
     .btn-dark {
       background: var(--black);
       color: var(--accent);
@@ -565,7 +610,7 @@
       letter-spacing: .03em;
       padding: 18px 42px;
       border: none;
-      border-radius: 3px;
+      border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
@@ -573,27 +618,27 @@
       transition: transform .15s, box-shadow .2s;
     }
     .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,0,0,.3); }
-    .final-note { margin-top: 16px; font-family: 'DM Mono', monospace; font-size: .72rem; color: rgba(0,0,0,.45); letter-spacing: .06em; position: relative; }
+    .final-note { margin-top: 32px; font-family: 'Space Mono', monospace; font-size: .72rem; color: var(--ink-muted); letter-spacing: .06em; position: relative; z-index: 1; }
 
     /* FOOTER */
     footer { background: var(--black); border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
-    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--accent); letter-spacing: .06em; margin-bottom: 8px; }
-    .footer-logo span { color: var(--muted); font-size: .9rem; font-family: 'DM Sans', sans-serif; font-weight: 300; letter-spacing: 0; margin-left: 8px; }
+    .footer-logo { font-family: 'Sora', sans-serif; font-size: 1.8rem; color: var(--accent); letter-spacing: .06em; margin-bottom: 8px; }
+    .footer-logo span { color: var(--muted); font-size: .9rem; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 0; margin-left: 8px; }
     footer p { font-size: .82rem; color: var(--muted); margin-top: 12px; }
     footer a { color: var(--muted); text-decoration: underline; }
-    footer a:hover { color: var(--text); }
+    footer a:hover { color: var(--muted); }
     .sister-badge {
       display: inline-flex; align-items: center; gap: 8px;
       margin-top: 20px;
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: .72rem;
       letter-spacing: .08em;
       color: var(--muted);
       border: 1px solid var(--border);
       padding: 8px 14px;
-      border-radius: 2px;
+      border-radius: 8px;
     }
-    .sister-badge a { text-decoration: none; color: var(--text); }
+    .sister-badge a { text-decoration: none; color: var(--muted); }
     .sister-badge a:hover { color: var(--accent); }
 
     @media (max-width: 680px) {
@@ -610,8 +655,8 @@
       width: 36px;
       height: 36px;
       background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 3px;
+      border: 1px solid var(--light-border);
+      border-radius: 8px;
       cursor: pointer;
       padding: 6px;
       flex-shrink: 0;
@@ -621,7 +666,7 @@
       width: 18px;
       height: 2px;
       background: var(--text);
-      border-radius: 2px;
+      border-radius: 8px;
       transition: all .25s ease;
     }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -644,7 +689,7 @@
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Mono', monospace;
       font-size: .85rem;
       letter-spacing: .08em;
       text-transform: uppercase;
@@ -671,99 +716,38 @@
       .ramp-table th, .ramp-table td { padding: 12px; }
     }
 
+    /* COMPARE TABLE */
+    #compareTable table tbody tr:nth-child(odd)  { background: var(--cream-white); }
+    #compareTable table tbody tr:nth-child(even) { background: var(--cream); }
+    #compareTable table thead tr { background: var(--cream-white); }
+    .wac-col { background: var(--black) !important; color: var(--white); }
+    .wac-col .wac-note { color: var(--text) !important; }
 
     /* WAITLIST MODAL */
-    .wl-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.78);
-      z-index: 9000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(13,13,13,.6);
+      align-items: center; justify-content: center; z-index: 200; padding: 20px;
     }
-    .wl-overlay.open { display: flex; }
-    .wl-box {
-      background: #141414;
-      border: 1px solid #2a2a2a;
-      border-top: 3px solid var(--accent);
-      border-radius: 3px;
-      padding: 48px 44px 40px;
-      max-width: 480px;
-      width: 100%;
-      position: relative;
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--cream-white); border-radius: 16px; padding: 36px 32px;
+      max-width: 400px; width: 100%; position: relative; text-align: left;
+      box-shadow: 0 24px 60px rgba(0,0,0,.3);
     }
-    .wl-close {
-      position: absolute;
-      top: 16px; right: 20px;
-      background: none; border: none;
-      color: var(--muted); font-size: 1.4rem;
-      cursor: pointer; line-height: 1;
+    .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; cursor: pointer; color: var(--ink-muted); font-size: 1.3rem; line-height: 1; }
+    .modal-box h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--ink); margin-bottom: 8px; }
+    .modal-box p { font-size: .9rem; color: var(--ink-muted); margin-bottom: 22px; line-height: 1.6; }
+    .modal-box input {
+      width: 100%; padding: 12px 14px; border: 1px solid var(--light-border); border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: .9rem; margin-bottom: 12px; background: var(--cream);
     }
-    .wl-close:hover { color: var(--white); }
-    .wl-label {
-      font-family: 'DM Mono', monospace;
-      font-size: .7rem; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 10px;
+    .modal-box input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+    .modal-submit {
+      width: 100%; background: var(--black); color: var(--white); border: none; border-radius: 8px;
+      padding: 13px; font-weight: 600; font-size: .92rem; cursor: pointer; transition: background .2s, color .2s;
     }
-    .wl-box h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      letter-spacing: .03em; line-height: .95;
-      color: var(--white); margin-bottom: 10px;
-    }
-    .wl-box p {
-      font-size: .92rem; color: var(--muted);
-      line-height: 1.6; margin-bottom: 28px;
-    }
-    .wl-field {
-      width: 100%;
-      background: #0d0d0d;
-      border: 1px solid #2a2a2a;
-      border-radius: 2px;
-      padding: 14px 16px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .95rem; color: var(--white);
-      margin-bottom: 12px;
-      outline: none;
-      transition: border-color .2s;
-    }
-    .wl-field:focus { border-color: var(--accent); }
-    .wl-field::placeholder { color: #555; }
-    .wl-submit {
-      width: 100%;
-      background: var(--accent);
-      color: #0d0d0d;
-      border: none;
-      border-radius: 2px;
-      padding: 16px;
-      font-family: 'DM Mono', monospace;
-      font-size: .85rem; letter-spacing: .08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      font-weight: 500;
-      transition: background .2s, transform .15s;
-      margin-top: 4px;
-    }
-    .wl-submit:hover { background: var(--accent-dim); transform: translateY(-1px); }
-    .wl-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
-    .wl-note {
-      text-align: center;
-      font-family: 'DM Mono', monospace;
-      font-size: .68rem; letter-spacing: .04em;
-      color: #555; margin-top: 14px; margin-bottom: 0;
-    }
-    .wl-success { display: none; text-align: center; padding: 20px 0; }
-    .wl-success-icon { font-size: 2.4rem; margin-bottom: 12px; }
-    .wl-success h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem; letter-spacing: .04em;
-      color: var(--white); margin-bottom: 8px;
-    }
-    .wl-success p { font-size: .9rem; color: var(--muted); margin-bottom: 0; }
-    @media (max-width: 520px) { .wl-box { padding: 36px 24px 28px; } }
+    .modal-submit:hover { background: var(--accent); color: var(--black); }
+    .modal-note { font-family: 'Space Mono', monospace; font-size: .68rem; color: var(--ink-muted); margin-top: 12px; text-align: center; }
   </style>
 </head>
 <body>
@@ -779,7 +763,7 @@
   </div>
   <div style="display:flex; align-items:center; gap:12px;">
     <a href="https://app.joinwac.com" class="nav-login" target="_blank" rel="noopener">Member Login</a>
-    <button class="nav-cta wl-trigger">Join Round 2 Waitlist</button>
+    <a href="#" class="nav-cta" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span>
       <span></span>
@@ -797,47 +781,39 @@
   <a href="https://app.joinwac.com" class="mobile-login" target="_blank" rel="noopener">Member Login</a>
 </div>
 
-<!-- TICKER -->
-<div class="ticker-wrap" aria-hidden="true">
-  <div class="ticker-track">
-    <span>Round 2 Opens August 1, 2026</span><span class="ticker-dot"></span>
-    <span>Round 1 Underway: May–July 2026</span><span class="ticker-dot"></span>
-    <span>WAC All-Star Cash Giveaway</span><span class="ticker-dot"></span>
-    <span>4 Rounds Per Year</span><span class="ticker-dot"></span>
-    <span>Website Accountability Challenge</span><span class="ticker-dot"></span>
-    <span>90 Days. Weekly Edits. Real Progress.</span><span class="ticker-dot"></span>
-    <span>Solopreneurs Only</span><span class="ticker-dot"></span>
-    <span>Round 2 Opens August 1, 2026</span><span class="ticker-dot"></span>
-    <span>Round 1 Underway: May–July 2026</span><span class="ticker-dot"></span>
-    <span>WAC All-Star Cash Giveaway</span><span class="ticker-dot"></span>
-    <span>4 Rounds Per Year</span><span class="ticker-dot"></span>
-    <span>Website Accountability Challenge</span><span class="ticker-dot"></span>
-    <span>90 Days. Weekly Edits. Real Progress.</span><span class="ticker-dot"></span>
-    <span>Solopreneurs Only</span><span class="ticker-dot"></span>
-  </div>
-</div>
-
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-kicker fade-up"><span class="live-dot"></span> Round 1 Is Underway — Round 2 Opens August 1</p>
+  <p class="hero-kicker fade-up"><span class="live-dot"></span> Round 2 opens August 1</p>
   <h1 class="fade-up delay-1">Your Website Won't<br>Update <em>Itself.</em></h1>
-  <p class="hero-sub fade-up delay-2">WAC is a 90-day, community based accountability challenge that keeps solopreneurs actually updating their websites — with proof, support, and cash prizes on the line.</p>
+  <p class="hero-sub fade-up delay-2">WAC is a 90-day, community based <strong>Website Accountability Challenge</strong> that keeps solopreneurs actually updating their websites, with proof, support, and cash prizes on the line.</p>
   <div class="hero-actions fade-up delay-3">
-    <button class="btn-primary wl-trigger">Join the Round 2 Waitlist</button>
+    <a href="#" class="btn-primary" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
     <a href="#how-it-works" class="btn-ghost">See How It Works</a>
   </div>
-  <p class="hero-note fade-up delay-4">Round 2 opens August 1, 2026 &nbsp;·&nbsp; Round 1 runs May–July 2026</p>
+  <p class="hero-note fade-up delay-4">Round 2 opens August 1, 2026 &nbsp;·&nbsp; $55</p>
+  <div class="hero-ui fade-up delay-4">
+    <div class="ui-panel">
+      <div class="ui-panel-header">
+        <span class="ui-panel-title">This week's submissions</span>
+        <span class="ui-tag">Month 3</span>
+      </div>
+      <div class="ui-row"><span>Homepage hero rewrite</span><span class="ui-pts">+12 pts</span></div>
+      <div class="ui-row"><span>Backlink Repository add</span><span class="ui-pts">+15 pts</span></div>
+      <div class="ui-row"><span>Peer review requested</span><span class="ui-pts">+5 pts</span></div>
+    </div>
+    <div class="float-card">All-Star Streak<b>12 weeks</b></div>
+  </div>
 </section>
 
 <!-- STAT BAR -->
 <div class="stat-bar">
   <div class="stat-bar-inner">
     <div class="stat-item">
-      <span class="stat-num">90</span>
+      <span class="stat-num count-num" data-count="90" data-suffix="">0</span>
       <div class="stat-label">Days per round</div>
     </div>
     <div class="stat-item">
-      <span class="stat-num">4×</span>
+      <span class="stat-num count-num" data-count="4" data-suffix="×">0×</span>
       <div class="stat-label">Rounds per year</div>
     </div>
     <div class="stat-item">
@@ -845,14 +821,14 @@
       <div class="stat-label">Cash prize grows with membership</div>
     </div>
     <div class="stat-item">
-      <span class="stat-num">3→</span>
+      <span class="stat-num count-num" data-count="3" data-suffix="→">0→</span>
       <div class="stat-label">Edits/week by month 3</div>
     </div>
   </div>
 </div>
 
 <!-- PROBLEM -->
-<section class="section">
+<section class="section section-dark">
   <div class="container">
     <div class="section-header">
       <span class="tag">The problem</span>
@@ -861,32 +837,32 @@
     </div>
     <div class="problem-grid">
       <div class="problem-card">
-        <span class="problem-icon">🕸</span>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 15.5"/></svg></div>
         <h3>Outdated and ignored</h3>
         <p>Your site still has last year's pricing, stale case studies, and a CTA you don't even offer anymore.</p>
       </div>
       <div class="problem-card">
-        <span class="problem-icon">📉</span>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><polyline points="4 7 10 13 14 9 20 17"/><polyline points="20 11 20 17 14 17"/></svg></div>
         <h3>No consistent momentum</h3>
         <p>You know you should update it. You just never get around to it. Weeks turn into months.</p>
       </div>
       <div class="problem-card">
-        <span class="problem-icon">🚫</span>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><path d="M4 4l7 17 2.5-7.5L21 11z"/></svg></div>
         <h3>No one holding you to it</h3>
         <p>Without accountability, website work always gets bumped by "more urgent" things. It never makes the list.</p>
       </div>
       <div class="problem-card">
-        <span class="problem-icon">💸</span>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><line x1="7" y1="9" x2="7" y2="9.01"/><line x1="17" y1="15" x2="17" y2="15.01"/></svg></div>
         <h3>Missed conversions</h3>
         <p>Every week your site isn't optimized is a week you're sending warm leads to a page that doesn't close.</p>
       </div>
       <div class="problem-card">
-        <span class="problem-icon">🔍</span>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="20.5" y2="20.5"/><line x1="8" y1="8" x2="13" y2="13"/><line x1="13" y1="8" x2="8" y2="13"/></svg></div>
         <h3>Invisible to search</h3>
-        <p>Search engines reward fresh, updated content. A static site is a silent site — and silent sites don't rank.</p>
+        <p>Search engines reward fresh, updated content. A static site is a silent site, and silent sites don't rank.</p>
       </div>
       <div class="problem-card">
-        <span class="problem-icon">😬</span>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><path d="M12 2 L22 20 L2 20 Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="16" x2="12" y2="16.01"/></svg></div>
         <h3>First impressions tank trust</h3>
         <p>When a prospect lands on your site and sees outdated work or broken elements, you've already lost them.</p>
       </div>
@@ -897,7 +873,7 @@
 <hr class="divider" />
 
 <!-- WHY DO IT -->
-<section class="section" style="background: var(--off-black);">
+<section class="section">
   <div class="container">
     <div class="section-header">
       <span class="tag">Why it matters</span>
@@ -907,35 +883,35 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto;">
 
       <div style="border-left: 3px solid var(--accent); padding: 0 0 0 24px;">
-        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: var(--accent); line-height: 1; margin-bottom: 8px;">434%</div>
-        <p style="font-weight: 600; color: var(--white); font-size: .97rem; margin-bottom: 6px;">More indexed pages</p>
-        <p style="font-size: .88rem; color: var(--muted); line-height: 1.6;">Companies that blog regularly have 434% more pages indexed by Google than those that don't — giving search engines far more reasons to surface your site.</p>
-        <p style="margin-top: 10px; font-family: 'DM Mono', monospace; font-size: .68rem; color: #aaaaaa;">Source: <a href="https://www.demandsage.com/business-blogging-statistics/" target="_blank" style="color: #aaaaaa; text-decoration: underline;">DemandSage, Business Blogging Statistics (2026)</a></p>
+        <div class="count-num" data-count="434" data-suffix="%" style="font-family: 'Sora', sans-serif; font-size: 2.6rem; color: var(--accent); line-height: 1; margin-bottom: 8px;">0%</div>
+        <p style="font-weight: 600; color: var(--ink); font-size: .97rem; margin-bottom: 6px;">More indexed pages</p>
+        <p style="font-size: .88rem; color: var(--ink-muted); line-height: 1.6;">Companies that blog regularly have 434% more pages indexed by Google than those that don't, giving search engines far more reasons to surface your site.</p>
+        <p style="margin-top: 10px; font-family: 'Space Mono', monospace; font-size: .68rem; color: var(--ink-muted);">Source: <a href="https://www.demandsage.com/business-blogging-statistics/" target="_blank" style="color: var(--ink-muted); text-decoration: underline;">DemandSage, Business Blogging Statistics (2026)</a></p>
       </div>
 
       <div style="border-left: 3px solid var(--accent); padding: 0 0 0 24px;">
-        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: var(--accent); line-height: 1; margin-bottom: 8px;">75%</div>
-        <p style="font-weight: 600; color: var(--white); font-size: .97rem; margin-bottom: 6px;">Judge credibility by design</p>
-        <p style="font-size: .88rem; color: var(--muted); line-height: 1.6;">75% of people admit to judging a business's credibility based on its website design and freshness. An outdated site signals an outdated business.</p>
-        <p style="margin-top: 10px; font-family: 'DM Mono', monospace; font-size: .68rem; color: #aaaaaa;">Source: <a href="https://www.sweor.com/firstimpressions" target="_blank" style="color: #aaaaaa; text-decoration: underline;">Sweor, First Impressions &amp; Web Credibility Research</a></p>
+        <div class="count-num" data-count="75" data-suffix="%" style="font-family: 'Sora', sans-serif; font-size: 2.6rem; color: var(--accent); line-height: 1; margin-bottom: 8px;">0%</div>
+        <p style="font-weight: 600; color: var(--ink); font-size: .97rem; margin-bottom: 6px;">Judge credibility by design</p>
+        <p style="font-size: .88rem; color: var(--ink-muted); line-height: 1.6;">75% of people admit to judging a business's credibility based on its website design and freshness. An outdated site signals an outdated business.</p>
+        <p style="margin-top: 10px; font-family: 'Space Mono', monospace; font-size: .68rem; color: var(--ink-muted);">Source: <a href="https://www.sweor.com/firstimpressions" target="_blank" style="color: var(--ink-muted); text-decoration: underline;">Sweor, First Impressions &amp; Web Credibility Research</a></p>
       </div>
 
       <div style="border-left: 3px solid var(--accent); padding: 0 0 0 24px;">
-        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: var(--accent); line-height: 1; margin-bottom: 8px;">67%</div>
-        <p style="font-weight: 600; color: var(--white); font-size: .97rem; margin-bottom: 6px;">More leads from active blogs</p>
-        <p style="font-size: .88rem; color: var(--muted); line-height: 1.6;">B2B businesses that maintain an active blog generate 67% more leads per month than those that don't. Consistent content is a direct pipeline driver.</p>
-        <p style="margin-top: 10px; font-family: 'DM Mono', monospace; font-size: .68rem; color: #aaaaaa;">Source: <a href="https://blog.hubspot.com/marketing/business-blogging-in-2015" target="_blank" style="color: #aaaaaa; text-decoration: underline;">HubSpot, Business Blogging Statistics</a></p>
+        <div class="count-num" data-count="67" data-suffix="%" style="font-family: 'Sora', sans-serif; font-size: 2.6rem; color: var(--accent); line-height: 1; margin-bottom: 8px;">0%</div>
+        <p style="font-weight: 600; color: var(--ink); font-size: .97rem; margin-bottom: 6px;">More leads from active blogs</p>
+        <p style="font-size: .88rem; color: var(--ink-muted); line-height: 1.6;">B2B businesses that maintain an active blog generate 67% more leads per month than those that don't. Consistent content is a direct pipeline driver.</p>
+        <p style="margin-top: 10px; font-family: 'Space Mono', monospace; font-size: .68rem; color: var(--ink-muted);">Source: <a href="https://blog.hubspot.com/marketing/business-blogging-in-2015" target="_blank" style="color: var(--ink-muted); text-decoration: underline;">HubSpot, Business Blogging Statistics</a></p>
       </div>
 
       <div style="border-left: 3px solid var(--accent); padding: 0 0 0 24px;">
-        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: var(--accent); line-height: 1; margin-bottom: 8px;">QDF</div>
-        <p style="font-weight: 600; color: var(--white); font-size: .97rem; margin-bottom: 6px;">Google rewards fresh content</p>
-        <p style="font-size: .88rem; color: var(--muted); line-height: 1.6;">Google's "Query Deserves Freshness" systems actively surface recently updated pages for relevant searches. Stale pages lose ground over time.</p>
-        <p style="margin-top: 10px; font-family: 'DM Mono', monospace; font-size: .68rem; color: #aaaaaa;">Source: <a href="https://developers.google.com/search/docs/appearance/ranking-systems-guide" target="_blank" style="color: #aaaaaa; text-decoration: underline;">Google Search Central, Ranking Systems Guide (2025)</a></p>
+        <div style="font-family: 'Sora', sans-serif; font-size: 2.6rem; color: var(--accent); line-height: 1; margin-bottom: 8px;">QDF</div>
+        <p style="font-weight: 600; color: var(--ink); font-size: .97rem; margin-bottom: 6px;">Google rewards fresh content</p>
+        <p style="font-size: .88rem; color: var(--ink-muted); line-height: 1.6;">Google's "Query Deserves Freshness" systems actively surface recently updated pages for relevant searches. Stale pages lose ground over time.</p>
+        <p style="margin-top: 10px; font-family: 'Space Mono', monospace; font-size: .68rem; color: var(--ink-muted);">Source: <a href="https://developers.google.com/search/docs/appearance/ranking-systems-guide" target="_blank" style="color: var(--ink-muted); text-decoration: underline;">Google Search Central, Ranking Systems Guide (2025)</a></p>
       </div>
 
     </div>
-    <p style="margin-top: 36px; text-align: center; font-size: .88rem; color: var(--muted); max-width: 580px; margin-left: auto; margin-right: auto;">WAC doesn't promise rankings or leads. It provides the structure, accountability, and community to help you show up consistently — so these results have a chance to happen.</p>
+    <p style="margin-top: 36px; text-align: center; font-size: .88rem; color: var(--ink-muted); max-width: 580px; margin-left: auto; margin-right: auto;">WAC doesn't promise rankings or leads. It provides the structure, accountability, and community to help you show up consistently, so these results have a chance to happen.</p>
   </div>
 </section>
 
@@ -954,9 +930,9 @@
       <span class="tag">Your guide</span>
       <h2>Nate Templeton Has Been Here.</h2>
       <p>As a solopreneur and full-time videographer of 8 years, Nate knows what it's like to build a business where the work always comes first and the website always comes last, but he was also looking for a way to combine accountability for himself along with the support of his Facebook community.</p>
-      <p>So he built SMAC — the Social Media Accountability Challenge — to fix the same problem for content consistency. WAC applies the same proven structure to your website.</p>
+      <p>So he built <a href="https://www.joinsmac.com" style="color: var(--accent); text-decoration: underline;">SMAC, the Social Media Accountability Challenge</a>, and <a href="https://jointheaac.com" style="color: var(--accent); text-decoration: underline;">AAC, the Ad Accountability Challenge</a>, to fix the same problem for content consistency and ad performance. WAC applies the same proven structure to your website.</p>
       <ul class="cred-list">
-        <li>Creator of SMAC, the sister challenge for social media consistency</li>
+        <li>Founder of <a href="https://www.joinsmac.com" style="color: var(--accent); text-decoration: underline;">SMAC</a> and <a href="https://jointheaac.com" style="color: var(--accent); text-decoration: underline;">AAC</a>, the sister challenges for social media and advertising consistency</li>
         <li>Active solopreneur who practices what he teaches</li>
         <li>Community-first, no-fluff accountability model</li>
         <!-- ADD more credentials here -->
@@ -985,14 +961,14 @@
         <div class="step-num">02</div>
         <div class="step-body">
           <h3>Make Your Edits, Post Your Proof</h3>
-          <p>Every week, update something on your site — copy, images, a blog post, a testimonial. Take a screenshot and submit it as proof. Simple.</p>
+          <p>Every week, update something on your site, copy, images, a blog post, a testimonial. Take a screenshot and submit it as proof. Simple.</p>
         </div>
       </div>
       <div class="plan-step">
         <div class="step-num">03</div>
         <div class="step-body">
           <h3>Hit Every Week, Earn All-Star Status</h3>
-          <p>Members who meet every weekly minimum earn WAC All-Star status and a cash prize. Finish the round — even without hitting every requirement — and you're entered into a separate random cash drawing too.</p>
+          <p>Members who meet every weekly minimum earn WAC All-Star status and a cash prize. Finish the round, even without hitting every requirement, and you're entered into a separate random cash drawing too.</p>
         </div>
       </div>
     </div>
@@ -1007,19 +983,19 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong style="color:var(--white)">Month 1</strong></td>
+          <td><strong style="color:var(--ink)">Month 1</strong></td>
           <td><span class="ramp-badge">1 edit / week</span></td>
-          <td style="color:var(--muted)">One small update. Build the habit.</td>
+          <td style="color:var(--ink-muted)">One small update. Build the habit.</td>
         </tr>
         <tr>
-          <td><strong style="color:var(--white)">Month 2</strong></td>
+          <td><strong style="color:var(--ink)">Month 2</strong></td>
           <td><span class="ramp-badge">2 edits / week</span></td>
-          <td style="color:var(--muted)">Momentum builds. Start optimizing.</td>
+          <td style="color:var(--ink-muted)">Momentum builds. Start optimizing.</td>
         </tr>
         <tr>
-          <td><strong style="color:var(--white)">Month 3</strong></td>
+          <td><strong style="color:var(--ink)">Month 3</strong></td>
           <td><span class="ramp-badge">3 edits / week</span></td>
-          <td style="color:var(--muted)">Full pace. Real results compound.</td>
+          <td style="color:var(--ink-muted)">Full pace. Real results compound.</td>
         </tr>
       </tbody>
     </table>
@@ -1027,7 +1003,7 @@
 </section>
 
 <!-- WHAT COUNTS -->
-<section class="section" style="background: var(--off-black); padding-top: 72px; padding-bottom: 72px;">
+<section class="section" style="padding-top: 72px; padding-bottom: 72px;">
   <div class="container">
     <div class="section-header">
       <span class="tag">What counts</span>
@@ -1052,28 +1028,28 @@
 </section>
 
 <!-- BACKLINK REPOSITORY -->
-<section class="section" style="background: var(--off-black); padding-top: 72px; padding-bottom: 72px;">
+<section class="section" style="padding-top: 72px; padding-bottom: 72px;">
   <div class="container">
     <div class="backlink-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 900px; margin: 0 auto;">
       <div>
         <span class="tag">Member Benefit</span>
-        <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(34px, 5vw, 54px); color: var(--white); letter-spacing: .03em; line-height: 1.05; margin-bottom: 20px;">The Backlink Repository</h2>
-        <p style="font-weight: 300; color: var(--text); margin-bottom: 16px; font-size: 1rem;">One of the most underused growth tools for solopreneurs is also the simplest — linking to each other. WAC members get access to a shared directory to find and exchange backlinks with fellow members.</p>
-        <p style="font-weight: 300; color: var(--text); margin-bottom: 24px; font-size: 1rem;">No link farms. No spam. Voluntary exchanges between real businesses — associate vendors, colleagues, and complementary services — the kind Google actually rewards.</p>
-        <p style="font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--muted);">Backlink impact varies by domain authority, relevance, and SEO strategy. WAC does not guarantee ranking improvements. <a href="https://developers.google.com/search/docs/fundamentals/links-and-ranking" target="_blank" style="color: var(--muted); text-decoration: underline;">Google on links and ranking →</a></p>
+        <h2 style="font-family: 'Sora', sans-serif; font-size: clamp(34px, 5vw, 54px); color: var(--ink); letter-spacing: .03em; line-height: 1.05; margin-bottom: 20px;">The Backlink Repository</h2>
+        <p style="font-weight: 300; color: var(--ink-muted); margin-bottom: 16px; font-size: 1rem;">One of the most underused growth tools for solopreneurs is also the simplest, linking to each other. WAC members get access to a shared directory to find and exchange backlinks with fellow members.</p>
+        <p style="font-weight: 300; color: var(--ink-muted); margin-bottom: 24px; font-size: 1rem;">No link farms. No spam. Voluntary exchanges between real businesses, associate vendors, colleagues, and complementary services, the kind Google actually rewards.</p>
+        <p style="font-family: 'Space Mono', monospace; font-size: .7rem; color: var(--ink-muted);">Backlink impact varies by domain authority, relevance, and SEO strategy. WAC does not guarantee ranking improvements. <a href="https://developers.google.com/search/docs/fundamentals/links-and-ranking" target="_blank" style="color: var(--ink-muted); text-decoration: underline;">Google on links and ranking →</a></p>
       </div>
       <div style="display: flex; flex-direction: column; gap: 2px;">
-        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px; transition: border-color .2s;">
-          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--accent); flex-shrink: 0; width: 28px;">01</div>
-          <div><p style="font-weight: 600; color: var(--white); font-size: .95rem; margin-bottom: 4px;">List your site</p><p style="font-size: .85rem; color: var(--muted);">Add your URL and a short business description so members can find you as a linking partner.</p></div>
+        <div class="backlink-card">
+          <div style="font-family: 'Sora', sans-serif; font-size: 1.4rem; color: var(--accent); flex-shrink: 0; width: 28px;">01</div>
+          <div><p style="font-weight: 600; color: var(--ink); font-size: .95rem; margin-bottom: 4px;">List your site</p><p style="font-size: .85rem; color: var(--ink-muted);">Add your URL and a short business description so members can find you as a linking partner.</p></div>
         </div>
-        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px;">
-          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--accent); flex-shrink: 0; width: 28px;">02</div>
-          <div><p style="font-weight: 600; color: var(--white); font-size: .95rem; margin-bottom: 4px;">Find your match</p><p style="font-size: .85rem; color: var(--muted);">Browse the directory for complementary businesses, vendors, or colleagues worth linking to.</p></div>
+        <div class="backlink-card">
+          <div style="font-family: 'Sora', sans-serif; font-size: 1.4rem; color: var(--accent); flex-shrink: 0; width: 28px;">02</div>
+          <div><p style="font-weight: 600; color: var(--ink); font-size: .95rem; margin-bottom: 4px;">Find your match</p><p style="font-size: .85rem; color: var(--ink-muted);">Browse the directory for complementary businesses, vendors, or colleagues worth linking to.</p></div>
         </div>
-        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px;">
-          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--accent); flex-shrink: 0; width: 28px;">03</div>
-          <div><p style="font-weight: 600; color: var(--white); font-size: .95rem; margin-bottom: 4px;">Exchange &amp; build authority</p><p style="font-size: .85rem; color: var(--muted);">Coordinate a mutual link exchange. Real links from real sites — these count as your weekly edits too.</p></div>
+        <div class="backlink-card">
+          <div style="font-family: 'Sora', sans-serif; font-size: 1.4rem; color: var(--accent); flex-shrink: 0; width: 28px;">03</div>
+          <div><p style="font-weight: 600; color: var(--ink); font-size: .95rem; margin-bottom: 4px;">Exchange &amp; build authority</p><p style="font-size: .85rem; color: var(--ink-muted);">Coordinate a mutual link exchange. Real links from real sites, these count as your weekly edits too.</p></div>
         </div>
       </div>
     </div>
@@ -1089,7 +1065,7 @@
       <span class="tag">The reward</span>
       <h2>Earn WAC All-Star Status</h2>
       <p>Hit every weekly minimum and you earn WAC All-Star status plus a cash prize. And even if you don't hit every requirement, finishing the round enters you into a separate random cash drawing. The bigger the membership, the bigger both prizes get.</p>
-      <button class="btn-primary wl-trigger">Join the Round 2 Waitlist</button>
+      <a href="#" class="btn-primary" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
       <div class="allstar-meta">
         <span>Zero misses required</span>
         <span>Two cash prizes per round</span>
@@ -1110,162 +1086,162 @@
     </div>
 
     <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:14px;">
-      <button onclick="document.getElementById('compareTable').scrollBy({left:-200,behavior:'smooth'})" style="background:transparent; border:1px solid #C9A84C; color:#C9A84C; font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.08em; padding:6px 16px; border-radius:3px; cursor:pointer;">← Prev</button>
-      <span style="font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:#a09a8e;">Swipe to Compare</span>
-      <button onclick="document.getElementById('compareTable').scrollBy({left:200,behavior:'smooth'})" style="background:transparent; border:1px solid #C9A84C; color:#C9A84C; font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.08em; padding:6px 16px; border-radius:3px; cursor:pointer;">Next →</button>
+      <button onclick="document.getElementById('compareTable').scrollBy({left:-200,behavior:'smooth'})" style="background:transparent; border:1px solid #C9A84C; color:#C9A84C; font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.08em; padding:6px 16px; border-radius: 8px; cursor:pointer;">← Prev</button>
+      <span style="font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:#a09a8e;">Swipe to Compare</span>
+      <button onclick="document.getElementById('compareTable').scrollBy({left:200,behavior:'smooth'})" style="background:transparent; border:1px solid #C9A84C; color:#C9A84C; font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.08em; padding:6px 16px; border-radius: 8px; cursor:pointer;">Next →</button>
     </div>
     <div id="compareTable" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
     <table style="width: 100%; border-collapse: collapse; font-size: .88rem; min-width: 700px;">
       <thead>
         <tr>
-          <th style="text-align: left; padding: 14px 16px; font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: #bbb; border-bottom: 1px solid var(--border); width: 22%;">Feature</th>
+          <th style="text-align: left; padding: 14px 16px; font-family: 'Space Mono', monospace; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); width: 22%;">Feature</th>
           <!-- WAC highlighted -->
-          <th style="text-align: center; padding: 14px 16px; background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.25); border-bottom: none; border-radius: 6px 6px 0 0; color: var(--accent); font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem; letter-spacing: .06em;">WAC 2026</th>
-          <th style="text-align: center; padding: 14px 12px; font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .06em; border-bottom: 1px solid var(--border); line-height: 1.6;"><span style="color: #fff; font-weight: 700;">HeyTony Insiders</span><br><span style="color: #888;">SEO Membership</span></th>
-          <th style="text-align: center; padding: 14px 12px; font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .06em; border-bottom: 1px solid var(--border); line-height: 1.6;"><span style="color: #fff; font-weight: 700;">Reese Hopper</span><br><span style="color: #888;">15-Day Creative Challenge</span></th>
-          <th style="text-align: center; padding: 14px 12px; font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .06em; border-bottom: 1px solid var(--border); line-height: 1.6;"><span style="color: #fff; font-weight: 700;">Mattie James</span><br><span style="color: #888;">5-Day Consistency Challenge</span></th>
-          <th style="text-align: center; padding: 14px 12px; font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .06em; border-bottom: 1px solid var(--border); line-height: 1.6;"><span style="color: #fff; font-weight: 700;">Accountability Communities</span><br><span style="color: #888;">Creatives Roundtable by FLOWN</span></th>
-          <th style="text-align: center; padding: 14px 12px; font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .06em; border-bottom: 1px solid var(--border); line-height: 1.6;"><span style="color: #fff; font-weight: 700;">Group Coaching</span><br><span style="color: #888;">Commit Action, Accountability Works</span></th>
+          <th style="text-align: center; padding: 14px 16px; border-radius: 12px 12px 0 0; color: var(--accent); font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: .06em;" class="wac-col">WAC 2026</th>
+          <th style="text-align: center; padding: 14px 12px; font-family: 'Space Mono', monospace; font-size: .65rem; letter-spacing: .06em; border-bottom: 1px solid var(--light-border); line-height: 1.6;"><span style="color: var(--ink); font-weight: 700;">HeyTony Insiders</span><br><span style="color: var(--ink-muted);">SEO Membership</span></th>
+          <th style="text-align: center; padding: 14px 12px; font-family: 'Space Mono', monospace; font-size: .65rem; letter-spacing: .06em; border-bottom: 1px solid var(--light-border); line-height: 1.6;"><span style="color: var(--ink); font-weight: 700;">Reese Hopper</span><br><span style="color: var(--ink-muted);">15-Day Creative Challenge</span></th>
+          <th style="text-align: center; padding: 14px 12px; font-family: 'Space Mono', monospace; font-size: .65rem; letter-spacing: .06em; border-bottom: 1px solid var(--light-border); line-height: 1.6;"><span style="color: var(--ink); font-weight: 700;">Mattie James</span><br><span style="color: var(--ink-muted);">5-Day Consistency Challenge</span></th>
+          <th style="text-align: center; padding: 14px 12px; font-family: 'Space Mono', monospace; font-size: .65rem; letter-spacing: .06em; border-bottom: 1px solid var(--light-border); line-height: 1.6;"><span style="color: var(--ink); font-weight: 700;">Accountability Communities</span><br><span style="color: var(--ink-muted);">Creatives Roundtable by FLOWN</span></th>
+          <th style="text-align: center; padding: 14px 12px; font-family: 'Space Mono', monospace; font-size: .65rem; letter-spacing: .06em; border-bottom: 1px solid var(--light-border); line-height: 1.6;"><span style="color: var(--ink); font-weight: 700;">Group Coaching</span><br><span style="color: var(--ink-muted);">Commit Action, Accountability Works</span></th>
         </tr>
       </thead>
       <tbody>
 
         <!-- Duration -->
         <tr>
-          <td style="padding: 14px 16px; color: var(--text); border-bottom: 1px solid var(--border); font-weight: 500;">Duration</td>
-          <td style="padding: 14px 16px; text-align: center; background: rgba(201,168,76,.05); border-left: 1px solid rgba(201,168,76,.25); border-right: 1px solid rgba(201,168,76,.25); border-bottom: 1px solid rgba(201,168,76,.1); color: var(--white); font-weight: 600;">90 days</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">Ongoing</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">15 days</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">5 days</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">Ongoing</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">Varies</td>
+          <td style="padding: 14px 16px; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); font-weight: 500;">Duration</td>
+          <td style="padding: 14px 16px; text-align: center; font-weight: 600;" class="wac-col">90 days</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">Ongoing</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">15 days</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">5 days</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">Ongoing</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">Varies</td>
         </tr>
 
         <!-- Website focus -->
         <tr>
-          <td style="padding: 14px 16px; color: var(--text); border-bottom: 1px solid var(--border); font-weight: 500;">Focused on website &amp; online presence growth</td>
-          <td style="padding: 14px 16px; text-align: center; background: rgba(201,168,76,.05); border-left: 1px solid rgba(201,168,76,.25); border-right: 1px solid rgba(201,168,76,.25); border-bottom: 1px solid rgba(201,168,76,.1);"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">SEO focus</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">Sometimes</td>
+          <td style="padding: 14px 16px; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); font-weight: 500;">Focused on website &amp; online presence growth</td>
+          <td style="padding: 14px 16px; text-align: center; text-align: center; padding: 14px 16px;" class="wac-col"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">SEO focus</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">Sometimes</td>
         </tr>
 
         <!-- Solopreneurs -->
-        <tr style="background: var(--off-black);">
-          <td style="padding: 14px 16px; color: var(--text); border-bottom: 1px solid var(--border); font-weight: 500;">Built specifically for solopreneurs</td>
-          <td style="padding: 14px 16px; text-align: center; background: rgba(201,168,76,.05); border-left: 1px solid rgba(201,168,76,.25); border-right: 1px solid rgba(201,168,76,.25); border-bottom: 1px solid rgba(201,168,76,.1);"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">Local biz owners</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">Partly</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">Partly</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">Varies</td>
+        <tr>
+          <td style="padding: 14px 16px; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); font-weight: 500;">Built specifically for solopreneurs</td>
+          <td style="padding: 14px 16px; text-align: center; text-align: center; padding: 14px 16px;" class="wac-col"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">Local biz owners</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">Partly</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">Partly</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">Varies</td>
         </tr>
 
         <!-- Ramping requirements -->
         <tr>
-          <td style="padding: 14px 16px; color: var(--text); border-bottom: 1px solid var(--border); font-weight: 500;">Structured requirements that ramp up over time</td>
-          <td style="padding: 14px 16px; text-align: center; background: rgba(201,168,76,.05); border-left: 1px solid rgba(201,168,76,.25); border-right: 1px solid rgba(201,168,76,.25); border-bottom: 1px solid rgba(201,168,76,.1);"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 16px; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); font-weight: 500;">Structured requirements that ramp up over time</td>
+          <td style="padding: 14px 16px; text-align: center; text-align: center; padding: 14px 16px;" class="wac-col"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
         </tr>
 
         <!-- Education -->
-        <tr style="background: var(--off-black);">
-          <td style="padding: 14px 16px; color: var(--text); border-bottom: 1px solid var(--border); font-weight: 500;">Content &amp; website strategy education included</td>
-          <td style="padding: 14px 16px; text-align: center; background: rgba(201,168,76,.05); border-left: 1px solid rgba(201,168,76,.25); border-right: 1px solid rgba(201,168,76,.25); border-bottom: 1px solid rgba(201,168,76,.1);"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span> <span style="font-size:.72rem; color: var(--muted); display:block; margin-top: 2px;">w/ cited sources</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border);"><span style="color: #4caf50; font-weight: 700;">✓</span> <span style="font-size:.68rem; color: #999; display:block; margin-top: 2px;">SEO focus</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">Creative focus</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
+        <tr>
+          <td style="padding: 14px 16px; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); font-weight: 500;">Content &amp; website strategy education included</td>
+          <td style="padding: 14px 16px; text-align: center; text-align: center; padding: 14px 16px;" class="wac-col"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span> <span style="font-size:.72rem; display:block; margin-top: 2px;" class="wac-note">w/ cited sources</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border);"><span style="color: #4caf50; font-weight: 700;">✓</span> <span style="font-size:.68rem; display:block; margin-top: 2px;" class="wac-note">SEO focus</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">Creative focus</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
         </tr>
 
         <!-- Peer community -->
         <tr>
-          <td style="padding: 14px 16px; color: var(--text); border-bottom: 1px solid var(--border); font-weight: 500;">Active peer community</td>
-          <td style="padding: 14px 16px; text-align: center; background: rgba(201,168,76,.05); border-left: 1px solid rgba(201,168,76,.25); border-right: 1px solid rgba(201,168,76,.25); border-bottom: 1px solid rgba(201,168,76,.1);"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--white);">VIP only</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
+          <td style="padding: 14px 16px; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); font-weight: 500;">Active peer community</td>
+          <td style="padding: 14px 16px; text-align: center; text-align: center; padding: 14px 16px;" class="wac-col"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: var(--ink);">VIP only</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border);"><span style="color: #4caf50; font-weight: 700;">✓</span></td>
         </tr>
 
         <!-- Cash prizes -->
-        <tr style="background: var(--off-black);">
-          <td style="padding: 14px 16px; color: var(--text); border-bottom: 1px solid var(--border); font-weight: 500;">Cash prizes for participants</td>
-          <td style="padding: 14px 16px; text-align: center; background: rgba(201,168,76,.05); border-left: 1px solid rgba(201,168,76,.25); border-right: 1px solid rgba(201,168,76,.25); border-bottom: 1px solid rgba(201,168,76,.1);"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span> <span style="font-size:.72rem; color: var(--muted); display:block; margin-top: 2px;">Grows w/ membership</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
+        <tr>
+          <td style="padding: 14px 16px; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); font-weight: 500;">Cash prizes for participants</td>
+          <td style="padding: 14px 16px; text-align: center; text-align: center; padding: 14px 16px;" class="wac-col"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span> <span style="font-size:.72rem; display:block; margin-top: 2px;" class="wac-note">Grows w/ membership</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
         </tr>
 
         <!-- Gamification / Leaderboard -->
         <tr>
-          <td style="padding: 14px 16px; color: var(--text); border-bottom: 1px solid var(--border); font-weight: 500;">Gamification w/ Leaderboard for Friendly Competition</td>
-          <td style="padding: 14px 16px; text-align: center; background: rgba(201,168,76,.05); border-left: 1px solid rgba(201,168,76,.25); border-right: 1px solid rgba(201,168,76,.25); border-bottom: 1px solid rgba(201,168,76,.1);"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span> <span style="font-size:.72rem; color: var(--muted); display:block; margin-top: 2px;">All-Star tracking</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 16px; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); font-weight: 500;">Gamification w/ Leaderboard for Friendly Competition</td>
+          <td style="padding: 14px 16px; text-align: center; text-align: center; padding: 14px 16px;" class="wac-col"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span> <span style="font-size:.72rem; display:block; margin-top: 2px;" class="wac-note">All-Star tracking</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
         </tr>
 
         <!-- Submission verification -->
         <tr>
-          <td style="padding: 14px 16px; color: var(--text); border-bottom: 1px solid var(--border); font-weight: 500;">Individual submission verification</td>
-          <td style="padding: 14px 16px; text-align: center; background: rgba(201,168,76,.05); border-left: 1px solid rgba(201,168,76,.25); border-right: 1px solid rgba(201,168,76,.25); border-bottom: 1px solid rgba(201,168,76,.1);"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span> <span style="font-size:.72rem; color: var(--muted); display:block; margin-top: 2px;">Every submission</span></td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
-          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 16px; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); font-weight: 500;">Individual submission verification</td>
+          <td style="padding: 14px 16px; text-align: center; text-align: center; padding: 14px 16px;" class="wac-col"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span> <span style="font-size:.72rem; display:block; margin-top: 2px;" class="wac-note">Every submission</span></td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
+          <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
         </tr>
 
         <!-- Price row -->
-        <tr style="background: var(--off-black);">
-          <td style="padding: 16px 16px; color: var(--text); font-weight: 600;">Price</td>
-          <td style="padding: 16px 16px; text-align: center; background: rgba(201,168,76,.1); border-left: 1px solid rgba(201,168,76,.25); border-right: 1px solid rgba(201,168,76,.25); border-bottom: 1px solid rgba(201,168,76,.25); border-radius: 0 0 6px 6px;">
-            <span style="font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--accent);">Less than a streaming service/mo.</span>
-            <span style="display: block; font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--accent); margin-top: 4px; letter-spacing: .06em;">ACTIVE NOW</span>
+        <tr>
+          <td style="padding: 16px 16px; color: var(--ink-muted); font-weight: 600;">Price</td>
+          <td style="padding: 16px 16px; text-align: center; border-radius: 0 0 12px 12px;" class="wac-col">
+            <span style="font-family: 'Sora', sans-serif; font-size: 1.1rem; color: var(--accent);">Less than a streaming service/mo.</span>
+            <span style="display: block; font-family: 'Space Mono', monospace; font-size: .65rem; color: var(--accent); margin-top: 4px; letter-spacing: .06em;">ACTIVE NOW</span>
           </td>
-          <td style="padding: 16px 12px; text-align: center; color: var(--white); font-family: 'DM Mono', monospace; font-size: .75rem; line-height: 1.6;">$97/mo<br><span style="color: #999;">Cancel anytime</span></td>
-          <td style="padding: 16px 12px; text-align: center; color: var(--white); font-family: 'DM Mono', monospace; font-size: .75rem; line-height: 1.6;">$59 for 15 days<br><span style="color: #999;">Not currently active</span></td>
-          <td style="padding: 16px 12px; text-align: center; color: var(--white); font-family: 'DM Mono', monospace; font-size: .75rem; line-height: 1.6;">$47 for 5 days<br><span style="color: #999;">Not currently active</span></td>
-          <td style="padding: 16px 12px; text-align: center; color: var(--white); font-family: 'DM Mono', monospace; font-size: .75rem; line-height: 1.6;">$95/mo<br>$332 / 6 wks</td>
-          <td style="padding: 16px 12px; text-align: center; color: var(--white); font-family: 'DM Mono', monospace; font-size: .75rem; line-height: 1.6;">$199–$2,000+/mo</td>
+          <td style="padding: 16px 12px; text-align: center; color: var(--ink); font-family: 'Space Mono', monospace; font-size: .75rem; line-height: 1.6;">$97/mo<br><span style="color: var(--ink-muted);">Cancel anytime</span></td>
+          <td style="padding: 16px 12px; text-align: center; color: var(--ink); font-family: 'Space Mono', monospace; font-size: .75rem; line-height: 1.6;">$59 for 15 days<br><span style="color: var(--ink-muted);">Not currently active</span></td>
+          <td style="padding: 16px 12px; text-align: center; color: var(--ink); font-family: 'Space Mono', monospace; font-size: .75rem; line-height: 1.6;">$47 for 5 days<br><span style="color: var(--ink-muted);">Not currently active</span></td>
+          <td style="padding: 16px 12px; text-align: center; color: var(--ink); font-family: 'Space Mono', monospace; font-size: .75rem; line-height: 1.6;">$95/mo<br>$332 / 6 wks</td>
+          <td style="padding: 16px 12px; text-align: center; color: var(--ink); font-family: 'Space Mono', monospace; font-size: .75rem; line-height: 1.6;">$199–$2,000+/mo</td>
         </tr>
 
       </tbody>
     </table>
     </div>
 
-    <p style="margin-top: 20px; font-family: 'DM Mono', monospace; font-size: .68rem; color: var(--border); text-align: center; max-width: 740px; margin-left: auto; margin-right: auto; line-height: 1.7;">Comparison based on publicly available information as of March 2026. Some competitor programs are not currently active. Creatives Roundtable pricing sourced from <a href="https://creativesroundtable.com" target="_blank" style="color: var(--border); text-decoration: underline;">creativesroundtable.com</a>. FLOWN 6-week sprint pricing sourced from <a href="https://flown.com" target="_blank" style="color: var(--border); text-decoration: underline;">flown.com</a>. HeyTony Insiders pricing sourced from <a href="https://heytony.ca/insiders/" target="_blank" style="color: var(--border); text-decoration: underline;">heytony.ca/insiders</a>.</p>
+    <p style="margin-top: 20px; font-family: 'Space Mono', monospace; font-size: .68rem; color: var(--ink-muted); text-align: center; max-width: 740px; margin-left: auto; margin-right: auto; line-height: 1.7;">Comparison based on publicly available information as of March 2026. Some competitor programs are not currently active. Creatives Roundtable pricing sourced from <a href="https://creativesroundtable.com" target="_blank" style="color: var(--ink-muted); text-decoration: underline;">creativesroundtable.com</a>. FLOWN 6-week sprint pricing sourced from <a href="https://flown.com" target="_blank" style="color: var(--ink-muted); text-decoration: underline;">flown.com</a>. HeyTony Insiders pricing sourced from <a href="https://heytony.ca/insiders/" target="_blank" style="color: var(--ink-muted); text-decoration: underline;">heytony.ca/insiders</a>.</p>
   </div>
 </section>
 
 <!-- PRICING -->
-<section class="section" id="join" style="background: var(--off-black);">
+<section class="section" id="join">
   <div class="container">
     <div class="section-header">
       <span class="tag">How Much Is It?</span>
       <h2>Simple, Upfront Pricing</h2>
-      <p>Round 1 is underway. Get on the waitlist for Round 2 — opening August 1, 2026.</p>
+      <p>Round 2 opens August 1, 2026. Join the waitlist for first access.</p>
     </div>
-    <div class="pricing-grid" style="max-width:480px; margin:0 auto;">
+    <div class="pricing-grid">
       <div class="pricing-card featured">
         <div class="pricing-badge-top">ROUND 2</div>
-        <div class="price-round">Round 2 — Aug–Oct 2026</div>
+        <div class="price-round">Round 2: August through October 2026</div>
         <div class="price-amt"><sup>$</sup>55</div>
-        <div class="price-note">One-time round fee &nbsp;·&nbsp; ~$18/mo</div>
-        <div style="display:inline-block; margin-top:8px; margin-bottom:16px; padding:3px 10px; border:1px solid #C9A84C; color:#C9A84C; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;">Waitlist opens now</div>
+        <div class="price-note">90-Day Access &nbsp;·&nbsp; ~$18/mo</div>
+        <div style="display:inline-block; margin-top:8px; margin-bottom:16px; padding:3px 10px; border:1px solid #C9A84C; color:#C9A84C; font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;">Waitlist open now</div>
         <ul class="price-features">
           <li>Full 90-day challenge access</li>
           <li>Weekly edit tracking + proof submission</li>
@@ -1279,15 +1255,15 @@
           <li>All-Star cash prize eligibility</li>
           <li>Random finisher prize drawing</li>
         </ul>
-        <button class="btn-primary wl-trigger" style="width:100%; text-align:center; display:block; cursor:pointer;">Join the Round 2 Waitlist</button>
-        <p style="text-align:center; font-family:'DM Mono',monospace; font-size:0.72rem; color:#a09a8e; margin-top:10px; letter-spacing:0.04em;">Round 2 opens August 1, 2026. Waitlist members notified first.</p>
+        <a href="#" class="btn-primary" style="width:100%; text-align:center; display:block;" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
+        <p style="text-align:center; font-family:'Space Mono',monospace; font-size:0.72rem; color:#a09a8e; margin-top:10px; letter-spacing:0.04em;">Waitlist members get first access before Round 2 opens to the public.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="section" id="faq">
+<section class="section section-dark" id="faq">
   <div class="container">
     <div class="section-header">
       <span class="tag">FAQ</span>
@@ -1296,11 +1272,11 @@
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q">What platform does my website need to be on?</div>
-        <div class="faq-a">Any platform counts — Squarespace, Showit, WordPress, Webflow, Wix, custom-built. If you can edit it and screenshot it, it qualifies.</div>
+        <div class="faq-a">Any platform counts, Squarespace, Showit, WordPress, Webflow, Wix, custom-built. If you can edit it and screenshot it, it qualifies.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">How do I submit proof of my edits?</div>
-        <div class="faq-a">We're building a custom WAC Platform where you'll be able to upload proof, track your submissions, view your streak, and access strategy and education resources — all in one place. Early access details will be shared with trial and Round 1 members in the coming weeks. Stay tuned.</div>
+        <div class="faq-a">Through the WAC Platform (app.joinwac.com). You'll upload proof, track your submissions, view your streak, and access strategy and education resources, all in one place. Members get login access as soon as their round begins.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What happens if I miss a week?</div>
@@ -1308,15 +1284,15 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">How does the cash giveaway work?</div>
-        <div class="faq-a">There are two prizes per round. The All-Star prize goes to members who hit every weekly minimum — zero misses. The finisher prize is a random drawing open to anyone who completes the round, regardless of whether they hit all requirements. Both prizes grow as membership grows. Full details will be shared at the start of each paid round.</div>
+        <div class="faq-a">There are two prizes per round. The All-Star prize goes to members who hit every weekly minimum, zero misses. The finisher prize is a random drawing open to anyone who completes the round, regardless of whether they hit all requirements. Both prizes grow as membership grows. Full details will be shared at the start of each paid round.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Is WAC related to SMAC?</div>
-        <div class="faq-a">Yes — WAC is the sister challenge to SMAC (Social Media Accountability Challenge), created by the same person with the same structure. SMAC focuses on social media consistency; WAC focuses on website updates. You can join one or both.</div>
+        <div class="faq-q">Is WAC related to SMAC & AAC?</div>
+        <div class="faq-a">Yes, WAC is part of a family of accountability challenges created by the same person with the same core structure. SMAC (Social Media Accountability Challenge) focuses on social media consistency, and AAC (Ad Accountability Challenge) focuses on running and optimizing paid ads. WAC focuses on website updates. You can join one, two, or all three.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">When does Round 1 start and end?</div>
-        <div class="faq-a">The 30-day free trial runs throughout April 2026. Round 1 (the first paid round) runs May through July 2026. Enrollment details for each will be announced closer to the start date.</div>
+        <div class="faq-q">When does Round 2 start and end?</div>
+        <div class="faq-a">Round 2 runs August 1 through October 31, 2026. The waitlist is open now, and waitlist members get first access before enrollment opens to the public.</div>
       </div>
     </div>
   </div>
@@ -1325,42 +1301,22 @@
 <!-- FINAL CTA -->
 <section class="final-cta">
   <h2>Stop Letting Your<br>Site Sit Still.</h2>
-  <p>Round 1 is already underway. Get on the waitlist now and be first in line when Round 2 opens August 1, 2026.</p>
-  <button class="btn-dark wl-trigger">Join the Round 2 Waitlist</button>
-  <p class="final-note">Round 2 opens August 1, 2026 &nbsp;·&nbsp; Round 1 runs May–July 2026</p>
+  <p>Round 2 opens August 1, 2026 at $55. Join the waitlist for first access.</p>
+  <a href="#" class="btn-primary" style="position:relative; z-index:1;" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
+  <p class="final-note">Round 2 opens August 1, 2026 &nbsp;·&nbsp; Waitlist members get first access</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">WAC <span>Website Accountability Challenge</span></div>
-  <p>Created by <a href="https://www.joinsmac.com">Nate Templeton</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="contact.html">Contact</a></p>
-  <p style="margin-top:16px; font-family:'DM Mono',monospace; font-size:.7rem; color:var(--border);">© 2026 Nate Templeton. All rights reserved.</p>
-  <div class="sister-badge">
-    Also by Nate: <a href="https://www.joinsmac.com">SMAC — Social Media Accountability Challenge →</a>
+  <p>Created by <a href="https://natetempleton.com">Nate Templeton</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="contact.html">Contact</a></p>
+  <p style="margin-top:16px; font-family:'Space Mono',monospace; font-size:.7rem; color:var(--muted);">© 2026 Nate Templeton. All rights reserved.</p>
+  <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:20px;">
+    <div class="sister-badge">
+      Also by Nate: <a href="https://www.joinsmac.com">SMAC, Social Media Accountability Challenge</a> &nbsp;|&nbsp; <a href="https://jointheaac.com">AAC, Ad Accountability Challenge →</a>
+    </div>
   </div>
 </footer>
-
-<!-- WAITLIST MODAL -->
-<div class="wl-overlay" id="wlOverlay" role="dialog" aria-modal="true" aria-label="Join Round 2 Waitlist">
-  <div class="wl-box">
-    <button class="wl-close" id="wlClose" aria-label="Close">&times;</button>
-    <div id="wlForm">
-      <p class="wl-label">Round 2 — Opens August 1, 2026</p>
-      <h2>Get on the<br>Waitlist.</h2>
-      <p>Be first to know when Round 2 enrollment opens. No spam, just your spot in line.</p>
-      <input class="wl-field" id="wlName" type="text" placeholder="First name" autocomplete="given-name" />
-      <input class="wl-field" id="wlEmail" type="email" placeholder="Email address" autocomplete="email" />
-      <button class="wl-submit" id="wlSubmit">Reserve My Spot &rarr;</button>
-      <p class="wl-note">Round 2 opens August 1, 2026 &nbsp;&middot;&nbsp; No spam, ever.</p>
-    </div>
-    <div class="wl-success" id="wlSuccess">
-      <div class="wl-success-icon">&#10003;</div>
-      <h3>You're on the List.</h3>
-      <p>We'll email you when Round 2 enrollment opens August 1, 2026.</p>
-    </div>
-  </div>
-</div>
-
 
 <script>
   // Hamburger menu
@@ -1388,6 +1344,31 @@
     });
   });
 
+  // Count-up animation for stat numbers
+  function animateCount(el) {
+    const target = parseInt(el.getAttribute('data-count'), 10);
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1200;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.textContent = current + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        countObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.count-num').forEach(el => countObserver.observe(el));
+
   // Scroll fade-in
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1404,61 +1385,37 @@
     el.style.transition = 'opacity .5s ease, transform .5s ease';
     observer.observe(el);
   });
-  // Waitlist Modal
-  const wlOverlay = document.getElementById('wlOverlay');
-  const wlClose   = document.getElementById('wlClose');
-  const wlSubmit  = document.getElementById('wlSubmit');
-  const wlForm    = document.getElementById('wlForm');
-  const wlSuccess = document.getElementById('wlSuccess');
 
-  function openWaitlist() {
-    wlOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    document.getElementById('wlName').focus();
-  }
-  function closeWaitlist() {
-    wlOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  document.querySelectorAll('.wl-trigger').forEach(btn => {
-    btn.addEventListener('click', openWaitlist);
-  });
-  wlClose.addEventListener('click', closeWaitlist);
-  wlOverlay.addEventListener('click', e => { if (e.target === wlOverlay) closeWaitlist(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeWaitlist(); });
-
-  wlSubmit.addEventListener('click', async () => {
-    const name  = document.getElementById('wlName').value.trim();
-    const email = document.getElementById('wlEmail').value.trim();
-    if (!name || !email) {
-      alert('Please enter your name and email.');
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-    wlSubmit.disabled = true;
-    wlSubmit.textContent = 'Submitting...';
+  // Waitlist modal
+  function openWaitlist() { document.getElementById('waitlistModal').classList.add('open'); }
+  function closeWaitlist() { document.getElementById('waitlistModal').classList.remove('open'); }
+  async function submitWaitlist(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
     try {
-      const res = await fetch('https://formspree.io/f/mqevpljw', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ name, email })
+      await fetch('https://formspree.io/f/mqevpljw', {
+        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
       });
-      if (res.ok) {
-        wlForm.style.display = 'none';
-        wlSuccess.style.display = 'block';
-      } else {
-        throw new Error('Server error');
-      }
-    } catch {
-      wlSubmit.disabled = false;
-      wlSubmit.textContent = 'Reserve My Spot →';
-      alert('Something went wrong. Please try again.');
+      form.innerHTML = '<p style="color:var(--accent-dim);font-weight:600;">You\'re on the list, see you August 1.</p>';
+    } catch (err) {
+      form.innerHTML = '<p style="color:#b3261e;">Something went wrong. Try again or email info@joinwac.com.</p>';
     }
-  });
+  }
 </script>
+
+<!-- WAITLIST MODAL -->
+<div class="modal-overlay" id="waitlistModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeWaitlist()" aria-label="Close">&times;</button>
+    <h3>Join the Round 2 waitlist</h3>
+    <p>Round 2 opens August 1, 2026 at $55. Waitlist members get first access before it opens to the public.</p>
+    <form id="waitlistForm" onsubmit="submitWaitlist(event)">
+      <input type="email" name="email" placeholder="you@yoursite.com" required />
+      <button type="submit" class="modal-submit">Join Waitlist</button>
+    </form>
+    <p class="modal-note">No spam. One email when Round 2 opens.</p>
+  </div>
+</div>
 </body>
 </html>
