@@ -384,8 +384,8 @@
     }
     .guide-text p { font-weight: 300; color: var(--text); margin-bottom: 16px; font-size: 1rem; }
     .cred-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
-    .cred-list li { position: relative; padding-left: 24px; font-size: .92rem; color: var(--text); }
-    .cred-list li::before { content: '→'; position: absolute; left: 0; top: 2px; color: var(--accent); font-family: 'Space Mono', monospace; }
+    .cred-list li { display: flex; align-items: flex-start; gap: 12px; font-size: .92rem; color: var(--text); }
+    .cred-list li::before { content: '→'; color: var(--accent); font-family: 'Space Mono', monospace; flex-shrink: 0; margin-top: 2px; }
 
     /* PLAN */
     .plan-steps { display: flex; flex-direction: column; gap: 2px; max-width: 700px; margin: 0 auto; }
@@ -513,9 +513,10 @@
     /* PRICING */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 16px;
-      max-width: 720px; margin: 0 auto;
+      max-width: 940px; margin: 0 auto;
+      align-items: start;
     }
     .pricing-card {
       border: 1px solid var(--light-border);
@@ -550,6 +551,31 @@
     .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
     .price-features li { font-size: .9rem; color: var(--ink); display: flex; align-items: flex-start; gap: 10px; }
     .price-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+    /* PRO BENEFITS */
+    .pro-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .pro-benefit-card {
+      background: var(--cream-white);
+      border-radius: 12px;
+      padding: 28px 22px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.18);
+      border: 1px solid rgba(201,168,76,.35);
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .pro-benefit-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(201,168,76,.25);
+      transform: translateY(-3px);
+    }
+    .pro-benefit-icon { font-size: 1.6rem; margin-bottom: 14px; }
+    .pro-benefit-card h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem; color: var(--ink); margin-bottom: 8px; }
+    .pro-benefit-card p { font-size: .85rem; color: var(--ink-muted); line-height: 1.6; font-weight: 300; }
+    .pro-benefit-soon { display: inline-block; margin-top: 10px; padding: 2px 8px; border: 1px solid var(--light-border); color: var(--ink-muted); font-family: 'Space Mono', monospace; font-size: .64rem; letter-spacing: .05em; text-transform: uppercase; border-radius: 6px; }
 
     /* FAQ */
     .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 2px; }
@@ -1027,6 +1053,23 @@
   </div>
 </section>
 
+<!-- ALL-STAR -->
+<section class="section allstar-section">
+  <div class="container">
+    <div class="allstar-box">
+      <span class="tag">The reward</span>
+      <h2>Earn WAC All-Star Status</h2>
+      <p>Hit every weekly minimum and you earn WAC All-Star status plus a cash prize. And even if you don't hit every requirement, finishing the round enters you into a separate random cash drawing. The bigger the membership, the bigger both prizes get.</p>
+      <a href="#" class="btn-primary" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
+      <div class="allstar-meta">
+        <span>Zero misses required</span>
+        <span>Two cash prizes per round</span>
+        <span>Quarterly giveaway</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- BACKLINK REPOSITORY -->
 <section class="section" style="padding-top: 72px; padding-bottom: 72px;">
   <div class="container">
@@ -1057,24 +1100,6 @@
 </section>
 
 <hr class="divider" />
-
-<!-- ALL-STAR -->
-<section class="section allstar-section">
-  <div class="container">
-    <div class="allstar-box">
-      <span class="tag">The reward</span>
-      <h2>Earn WAC All-Star Status</h2>
-      <p>Hit every weekly minimum and you earn WAC All-Star status plus a cash prize. And even if you don't hit every requirement, finishing the round enters you into a separate random cash drawing. The bigger the membership, the bigger both prizes get.</p>
-      <a href="#" class="btn-primary" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
-      <div class="allstar-meta">
-        <span>Zero misses required</span>
-        <span>Two cash prizes per round</span>
-        <span>Quarterly giveaway</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <!-- COMPARISON TABLE -->
 <section class="section" id="compare" style="padding-top: 80px; padding-bottom: 80px; overflow-x: auto;">
@@ -1227,6 +1252,45 @@
   </div>
 </section>
 
+<!-- WAC PRO BENEFITS -->
+<section class="section section-dark" style="padding-top: 72px; padding-bottom: 72px;">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Upgrade</span>
+      <h2>What WAC Pro Unlocks</h2>
+      <p>Everything in Base WAC, plus AI-powered tools that do the thinking for you.</p>
+    </div>
+    <div class="pro-benefits-grid">
+      <div class="pro-benefit-card">
+        <div class="pro-benefit-icon">🗓</div>
+        <h3>Weekly Website Action Plan</h3>
+        <p>A personalized update plan every week, tailored to your niche, streak, and this week's requirement.</p>
+      </div>
+      <div class="pro-benefit-card">
+        <div class="pro-benefit-icon">✍️</div>
+        <h3>Website Copy Assist</h3>
+        <p>AI-generated copy suggestions for whatever page or section you're updating that week.</p>
+      </div>
+      <div class="pro-benefit-card">
+        <div class="pro-benefit-icon">📈</div>
+        <h3>Advanced Streak Analytics</h3>
+        <p>Deeper insight into your consistency, trends, and where you're gaining or losing momentum.</p>
+      </div>
+      <div class="pro-benefit-card">
+        <div class="pro-benefit-icon">🔍</div>
+        <h3>SEO Screenshot Review</h3>
+        <p>Submit a screenshot of your page and get feedback on SEO and copy improvements.</p>
+      </div>
+      <div class="pro-benefit-card">
+        <div class="pro-benefit-icon">⚡</div>
+        <h3>Custom Claude Skill Creator</h3>
+        <p>Build your own custom Claude skill tailored to your website and workflow.</p>
+        <span class="pro-benefit-soon">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section class="section" id="join">
   <div class="container">
@@ -1237,8 +1301,8 @@
     </div>
     <div class="pricing-grid">
       <div class="pricing-card featured">
-        <div class="pricing-badge-top">ROUND 2</div>
-        <div class="price-round">Round 2: August through October 2026</div>
+        <div class="pricing-badge-top">BASE</div>
+        <div class="price-round">Base: August through October 2026</div>
         <div class="price-amt"><sup>$</sup>55</div>
         <div class="price-note">90-Day Access &nbsp;·&nbsp; ~$18/mo</div>
         <div style="display:inline-block; margin-top:8px; margin-bottom:16px; padding:3px 10px; border:1px solid #C9A84C; color:#C9A84C; font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;">Waitlist open now</div>
@@ -1253,7 +1317,23 @@
           <li>Member directory &amp; spotlight eligibility</li>
           <li>End-of-round website audit checklist</li>
           <li>All-Star cash prize eligibility</li>
-          <li>Random finisher prize drawing</li>
+        </ul>
+        <a href="#" class="btn-primary" style="width:100%; text-align:center; display:block;" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
+        <p style="text-align:center; font-family:'Space Mono',monospace; font-size:0.72rem; color:#a09a8e; margin-top:10px; letter-spacing:0.04em;">Waitlist members get first access before Round 2 opens to the public.</p>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-badge-top" style="background:var(--ink); color:var(--cream-white);">PRO</div>
+        <div class="price-round">Pro: August through October 2026</div>
+        <div class="price-amt"><sup>$</sup>75</div>
+        <div class="price-note">90-Day Access &nbsp;·&nbsp; ~$25/mo</div>
+        <div style="display:inline-block; margin-top:8px; margin-bottom:16px; padding:3px 10px; border:1px solid var(--ink); color:var(--ink); font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;">Waitlist open now</div>
+        <ul class="price-features">
+          <li>Everything in Base WAC</li>
+          <li>Weekly Website Action Plan generator</li>
+          <li>Website Copy Assist</li>
+          <li>Advanced Streak Analytics</li>
+          <li>SEO Screenshot Review</li>
+          <li>Custom Claude Skill Creator (coming soon)</li>
         </ul>
         <a href="#" class="btn-primary" style="width:100%; text-align:center; display:block;" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
         <p style="text-align:center; font-family:'Space Mono',monospace; font-size:0.72rem; color:#a09a8e; margin-top:10px; letter-spacing:0.04em;">Waitlist members get first access before Round 2 opens to the public.</p>
