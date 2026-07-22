@@ -564,6 +564,13 @@
       border-radius: 12px;
       padding: 28px 22px;
       box-shadow: 0 4px 16px rgba(0,0,0,.18);
+      border: 1px solid rgba(201,168,76,.35);
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .pro-benefit-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(201,168,76,.25);
+      transform: translateY(-3px);
     }
     .pro-benefit-icon { font-size: 1.6rem; margin-bottom: 14px; }
     .pro-benefit-card h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem; color: var(--ink); margin-bottom: 8px; }
