@@ -384,8 +384,8 @@
     }
     .guide-text p { font-weight: 300; color: var(--text); margin-bottom: 16px; font-size: 1rem; }
     .cred-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
-    .cred-list li { display: flex; align-items: flex-start; gap: 12px; font-size: .92rem; color: var(--text); }
-    .cred-list li::before { content: '→'; color: var(--accent); font-family: 'Space Mono', monospace; flex-shrink: 0; margin-top: 2px; }
+    .cred-list li { position: relative; padding-left: 24px; font-size: .92rem; color: var(--text); }
+    .cred-list li::before { content: '→'; position: absolute; left: 0; top: 2px; color: var(--accent); font-family: 'Space Mono', monospace; }
 
     /* PLAN */
     .plan-steps { display: flex; flex-direction: column; gap: 2px; max-width: 700px; margin: 0 auto; }
@@ -811,7 +811,7 @@
 <section class="hero">
   <p class="hero-kicker fade-up"><span class="live-dot"></span> Round 2 opens August 1</p>
   <h1 class="fade-up delay-1">Your Website Won't<br>Update <em>Itself.</em></h1>
-  <p class="hero-sub fade-up delay-2">WAC is a 90-day, community based <strong>Website Accountability Challenge</strong> that keeps solopreneurs actually updating their websites, with proof, support, and cash prizes on the line.</p>
+  <p class="hero-sub fade-up delay-2">WAC is a 90-day, community based <strong>Website Accountability Challenge</strong> that keeps solopreneurs actually updating their websites, with proof, support, and a cash prize on the line.</p>
   <div class="hero-actions fade-up delay-3">
     <a href="#" class="btn-primary" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
     <a href="#how-it-works" class="btn-ghost">See How It Works</a>
@@ -980,7 +980,7 @@
         <div class="step-num">01</div>
         <div class="step-body">
           <h3>Join the Challenge</h3>
-          <p>Sign up for the 30-day free trial in April 2026. Get a feel for the structure, build the habit, and see what consistent website updates can do for your business.</p>
+          <p>Sign up for Round 2, starting August 1. Get a feel for the structure, build the habit, and see what consistent website updates can do for your business.</p>
         </div>
       </div>
       <div class="plan-step">
@@ -994,7 +994,7 @@
         <div class="step-num">03</div>
         <div class="step-body">
           <h3>Hit Every Week, Earn All-Star Status</h3>
-          <p>Members who meet every weekly minimum earn WAC All-Star status and a cash prize. Finish the round, even without hitting every requirement, and you're entered into a separate random cash drawing too.</p>
+          <p>Members who meet every weekly minimum earn WAC All-Star status and the round's cash prize.</p>
         </div>
       </div>
     </div>
@@ -1059,12 +1059,11 @@
     <div class="allstar-box">
       <span class="tag">The reward</span>
       <h2>Earn WAC All-Star Status</h2>
-      <p>Hit every weekly minimum and you earn WAC All-Star status plus a cash prize. And even if you don't hit every requirement, finishing the round enters you into a separate random cash drawing. The bigger the membership, the bigger both prizes get.</p>
+      <p>Hit every weekly minimum and you earn WAC All-Star status plus the round's cash prize. The bigger the membership, the bigger the prize gets.</p>
       <a href="#" class="btn-primary" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
       <div class="allstar-meta">
         <span>Zero misses required</span>
-        <span>Two cash prizes per round</span>
-        <span>Quarterly giveaway</span>
+        <span>Cash prize grows with membership</span>
       </div>
     </div>
   </div>
@@ -1199,7 +1198,7 @@
 
         <!-- Cash prizes -->
         <tr>
-          <td style="padding: 14px 16px; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); font-weight: 500;">Cash prizes for participants</td>
+          <td style="padding: 14px 16px; color: var(--ink-muted); border-bottom: 1px solid var(--light-border); font-weight: 500;">Cash prize for participants</td>
           <td style="padding: 14px 16px; text-align: center; text-align: center; padding: 14px 16px;" class="wac-col"><span style="color: #4caf50; font-weight: 700; font-size: 1.1rem;">✓</span> <span style="font-size:.72rem; display:block; margin-top: 2px;" class="wac-note">Grows w/ membership</span></td>
           <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
           <td style="padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--light-border); color: #ff5555; font-weight: 700;">✗</td>
@@ -1360,11 +1359,11 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">What happens if I miss a week?</div>
-        <div class="faq-a">You stay in the challenge and can keep posting, but you lose WAC All-Star status and the All-Star cash prize for that round. You're still eligible for the random finisher drawing as long as you complete the round. Every week counts.</div>
+        <div class="faq-a">You stay in the challenge and can keep posting, but you lose WAC All-Star status and the cash prize eligibility for that round. Every week counts.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">How does the cash giveaway work?</div>
-        <div class="faq-a">There are two prizes per round. The All-Star prize goes to members who hit every weekly minimum, zero misses. The finisher prize is a random drawing open to anyone who completes the round, regardless of whether they hit all requirements. Both prizes grow as membership grows. Full details will be shared at the start of each paid round.</div>
+        <div class="faq-a">There's one cash prize per round, awarded to members who hit every weekly minimum with zero misses. The prize grows as membership grows. Full details will be shared at the start of each paid round.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Is WAC related to SMAC & AAC?</div>
