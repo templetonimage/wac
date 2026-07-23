@@ -551,6 +551,26 @@
     .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
     .price-features li { font-size: .9rem; color: var(--ink); display: flex; align-items: flex-start; gap: 10px; }
     .price-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+    .price-dates { font-family: 'Space Mono', monospace; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dim); margin-top: 10px; margin-bottom: 4px; }
+
+    /* BUNDLE ROW */
+    .bundle-row { max-width: 940px; margin: 20px auto 0; }
+    .pricing-card.bundle { border-color: var(--accent); background: linear-gradient(160deg, rgba(201,168,76,.10) 0%, var(--cream-white) 65%); }
+    .bundle-intro { font-size: .88rem; color: var(--ink-muted); line-height: 1.6; margin-bottom: 24px; }
+    .bundle-intro a { color: var(--accent-dim); text-decoration: underline; }
+    .bundle-options { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }
+    .bundle-option { border: 1px solid var(--light-border); border-radius: 12px; padding: 22px 22px 20px; background: rgba(253,251,246,.7); }
+    .bundle-option-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .bundle-option-label { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--ink); margin-bottom: 4px; }
+    .bundle-option-sub { font-family: 'Space Mono', monospace; font-size: .68rem; color: var(--ink-muted); letter-spacing: .03em; }
+    .bundle-option-price { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 2.1rem; color: var(--ink); line-height: 1; white-space: nowrap; }
+    .bundle-option-price sup { font-size: .95rem; vertical-align: top; margin-top: 5px; margin-right: 1px; }
+    .bundle-option-btn { display: block; width: 100%; text-align: center; font-family: 'Inter', sans-serif; font-weight: 600; font-size: .92rem; letter-spacing: .03em; color: var(--white); background: var(--black); border: 1px solid var(--black); border-radius: 10px; padding: 12px 14px; text-decoration: none; transition: background .2s, color .2s, border-color .2s; }
+    .bundle-option-btn:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
+    .bundle-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 20px 0 4px; }
+    .bundle-features li { font-size: .84rem; color: var(--ink); display: flex; align-items: flex-start; gap: 10px; }
+    .bundle-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+    .bundle-fine-print { text-align: center; font-family: 'Space Mono', monospace; font-size: .72rem; color: var(--ink-muted); margin-top: 16px; letter-spacing: .04em; }
 
     /* PRO BENEFITS */
     .pro-benefits-grid {
@@ -1313,6 +1333,86 @@
         <p style="text-align:center; font-family:'Space Mono',monospace; font-size:0.72rem; color:#a09a8e; margin-top:10px; letter-spacing:0.04em;">Round 2 opens August 1, 2026. Secure your spot now.</p>
       </div>
     </div>
+    <div class="bundle-row">
+      <div class="pricing-card bundle">
+        <div class="pricing-badge-top">BEST VALUE &middot; SAVE $19</div>
+        <div class="price-dates">Aug &ndash; Oct 2026</div>
+        <div class="price-round">One-time payment</div>
+        <div class="bundle-intro">Build a converting website and run consistent ads side by side. Bundle a round of WAC with 3 months of the <a href="https://jointheaac.com" target="_blank" rel="noopener">Ad Accountability Challenge</a>, and <em>save $19</em> over buying both separately.</div>
+        <div class="bundle-options">
+          <div class="bundle-option">
+            <div class="bundle-option-top">
+              <div>
+                <div class="bundle-option-label">WAC Pro + AAC</div>
+                <div class="bundle-option-sub">WAC Pro round &middot; 3mo AAC &middot; ~$45/mo</div>
+                <div class="bundle-option-sub" style="color:var(--accent-dim); margin-top:2px;">Saves $19 over purchasing separately</div>
+              </div>
+              <div class="bundle-option-price"><sup>$</sup>137</div>
+            </div>
+            <a href="https://buy.stripe.com/14AfZhbhV1wH4TA9h7bo40h" target="_blank" rel="noopener" class="bundle-option-btn">Choose Pro</a>
+          </div>
+          <div class="bundle-option">
+            <div class="bundle-option-top">
+              <div>
+                <div class="bundle-option-label">WAC Base + AAC</div>
+                <div class="bundle-option-sub">WAC Base round &middot; 3mo AAC &middot; ~$39/mo</div>
+                <div class="bundle-option-sub" style="color:var(--accent-dim); margin-top:2px;">Saves $19 over purchasing separately</div>
+              </div>
+              <div class="bundle-option-price"><sup>$</sup>117</div>
+            </div>
+            <a href="https://buy.stripe.com/4gM9AT3Pt5MXdq6ctjbo40g" target="_blank" rel="noopener" class="bundle-option-btn">Choose Base</a>
+          </div>
+        </div>
+        <ul class="bundle-features">
+          <li>1 full WAC round, Base or Pro</li>
+          <li>3 months AAC membership</li>
+          <li>Website + ad accountability, one bundle</li>
+        </ul>
+        <p class="bundle-fine-print">One-time payment &middot; Available now, no trial or waitlist</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY BUNDLE -->
+<section class="section" style="padding-top: 64px; padding-bottom: 72px; background: var(--cream-white);">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Website + Ads</span>
+      <h2>Why Should I Bundle WAC &amp; AAC?</h2>
+      <p>Website quality and ad spend aren't separate problems, they're the same problem viewed from two ends of the funnel.</p>
+    </div>
+    <div class="plan-steps">
+      <div class="plan-step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>Your Website Is Where Traffic Lands</h3>
+          <p>Every ad click depends on what it hits next. A consistent ad campaign pointed at a stale or unclear website leaks conversions no amount of extra budget will fix, so the fix starts with the page, not the ad.</p>
+        </div>
+      </div>
+      <div class="plan-step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>Tracking Only Works End to End</h3>
+          <p>Pixel and conversion tracking need a website that's actually built to receive and report on that traffic. WAC keeps your site's tracking, forms, and CTAs current while AAC keeps the traffic flowing.</p>
+        </div>
+      </div>
+      <div class="plan-step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>Same Proof-Based Model, Same Discipline</h3>
+          <p>Both challenges run on weekly proof submissions and peer accountability. Bundling means one consistent habit loop covering both sides of your funnel instead of two disconnected efforts.</p>
+        </div>
+      </div>
+      <div class="plan-step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h3>Compounding, Not Competing</h3>
+          <p>A better website increases what every ad dollar is worth. More consistent ad traffic gives your website more data to convert on. Run both at once and each one makes the other more effective.</p>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:32px; font-size:.92rem; color:var(--ink-muted);">Learn more about the <a href="https://jointheaac.com" target="_blank" rel="noopener" style="color:var(--accent-dim); text-decoration:underline;">Ad Accountability Challenge</a>.</p>
   </div>
 </section>
 
