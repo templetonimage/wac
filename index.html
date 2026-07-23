@@ -749,31 +749,6 @@
     .wac-col { background: var(--black) !important; color: var(--white); }
     .wac-col .wac-note { color: var(--text) !important; }
 
-    /* WAITLIST MODAL */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0; background: rgba(13,13,13,.6);
-      align-items: center; justify-content: center; z-index: 200; padding: 20px;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal-box {
-      background: var(--cream-white); border-radius: 16px; padding: 36px 32px;
-      max-width: 400px; width: 100%; position: relative; text-align: left;
-      box-shadow: 0 24px 60px rgba(0,0,0,.3);
-    }
-    .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; cursor: pointer; color: var(--ink-muted); font-size: 1.3rem; line-height: 1; }
-    .modal-box h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--ink); margin-bottom: 8px; }
-    .modal-box p { font-size: .9rem; color: var(--ink-muted); margin-bottom: 22px; line-height: 1.6; }
-    .modal-box input {
-      width: 100%; padding: 12px 14px; border: 1px solid var(--light-border); border-radius: 8px;
-      font-family: 'Inter', sans-serif; font-size: .9rem; margin-bottom: 12px; background: var(--cream);
-    }
-    .modal-box input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-    .modal-submit {
-      width: 100%; background: var(--black); color: var(--white); border: none; border-radius: 8px;
-      padding: 13px; font-weight: 600; font-size: .92rem; cursor: pointer; transition: background .2s, color .2s;
-    }
-    .modal-submit:hover { background: var(--accent); color: var(--black); }
-    .modal-note { font-family: 'Space Mono', monospace; font-size: .68rem; color: var(--ink-muted); margin-top: 12px; text-align: center; }
   </style>
 </head>
 <body>
@@ -789,7 +764,7 @@
   </div>
   <div style="display:flex; align-items:center; gap:12px;">
     <a href="https://app.joinwac.com" class="nav-login" target="_blank" rel="noopener">Member Login</a>
-    <a href="#" class="nav-cta" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
+    <a href="https://buy.stripe.com/4gM7sLclZcbl1Hoctjbo40i" class="nav-cta" target="_blank" rel="noopener">Buy WAC Round 2</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span>
       <span></span>
@@ -813,7 +788,7 @@
   <h1 class="fade-up delay-1">Your Website Won't<br>Update <em>Itself.</em></h1>
   <p class="hero-sub fade-up delay-2">WAC is a 90-day, community based <strong>Website Accountability Challenge</strong> that keeps solopreneurs actually updating their websites, with proof, support, and a cash prize on the line.</p>
   <div class="hero-actions fade-up delay-3">
-    <a href="#" class="btn-primary" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
+    <a href="https://buy.stripe.com/4gM7sLclZcbl1Hoctjbo40i" class="btn-primary" target="_blank" rel="noopener">Buy WAC Round 2</a>
     <a href="#how-it-works" class="btn-ghost">See How It Works</a>
   </div>
   <p class="hero-note fade-up delay-4">Round 2 opens August 1, 2026 &nbsp;·&nbsp; $55</p>
@@ -1060,7 +1035,7 @@
       <span class="tag">The reward</span>
       <h2>Earn WAC All-Star Status</h2>
       <p>Hit every weekly minimum and you earn WAC All-Star status plus the round's cash prize. The bigger the membership, the bigger the prize gets.</p>
-      <a href="#" class="btn-primary" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
+      <a href="https://buy.stripe.com/4gM7sLclZcbl1Hoctjbo40i" class="btn-primary" target="_blank" rel="noopener">Buy WAC Round 2</a>
       <div class="allstar-meta">
         <span>Zero misses required</span>
         <span>Cash prize grows with membership</span>
@@ -1296,7 +1271,7 @@
     <div class="section-header">
       <span class="tag">How Much Is It?</span>
       <h2>Simple, Upfront Pricing</h2>
-      <p>Round 2 opens August 1, 2026. Join the waitlist for first access.</p>
+      <p>Round 2 opens August 1, 2026. Enrollment is open now.</p>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card featured">
@@ -1304,7 +1279,7 @@
         <div class="price-round">Base: August through October 2026</div>
         <div class="price-amt"><sup>$</sup>55</div>
         <div class="price-note">90-Day Access &nbsp;·&nbsp; ~$18/mo</div>
-        <div style="display:inline-block; margin-top:8px; margin-bottom:16px; padding:3px 10px; border:1px solid #C9A84C; color:#C9A84C; font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;">Waitlist open now</div>
+        <div style="display:inline-block; margin-top:8px; margin-bottom:16px; padding:3px 10px; border:1px solid #C9A84C; color:#C9A84C; font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;">Enrollment open now</div>
         <ul class="price-features">
           <li>Full 90-day challenge access</li>
           <li>Weekly edit tracking + proof submission</li>
@@ -1317,15 +1292,15 @@
           <li>End-of-round website audit checklist</li>
           <li>All-Star cash prize eligibility</li>
         </ul>
-        <a href="#" class="btn-primary" style="width:100%; text-align:center; display:block;" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
-        <p style="text-align:center; font-family:'Space Mono',monospace; font-size:0.72rem; color:#a09a8e; margin-top:10px; letter-spacing:0.04em;">Waitlist members get first access before Round 2 opens to the public.</p>
+        <a href="https://buy.stripe.com/4gM7sLclZcbl1Hoctjbo40i" class="btn-primary" style="width:100%; text-align:center; display:block;" target="_blank" rel="noopener">Buy WAC Round 2</a>
+        <p style="text-align:center; font-family:'Space Mono',monospace; font-size:0.72rem; color:#a09a8e; margin-top:10px; letter-spacing:0.04em;">Round 2 opens August 1, 2026. Secure your spot now.</p>
       </div>
       <div class="pricing-card">
         <div class="pricing-badge-top" style="background:var(--ink); color:var(--cream-white);">PRO</div>
         <div class="price-round">Pro: August through October 2026</div>
         <div class="price-amt"><sup>$</sup>75</div>
         <div class="price-note">90-Day Access &nbsp;·&nbsp; ~$25/mo</div>
-        <div style="display:inline-block; margin-top:8px; margin-bottom:16px; padding:3px 10px; border:1px solid var(--ink); color:var(--ink); font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;">Waitlist open now</div>
+        <div style="display:inline-block; margin-top:8px; margin-bottom:16px; padding:3px 10px; border:1px solid var(--ink); color:var(--ink); font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase;">Enrollment open now</div>
         <ul class="price-features">
           <li>Everything in Base WAC</li>
           <li>Weekly Website Action Plan generator</li>
@@ -1334,8 +1309,8 @@
           <li>SEO Screenshot Review</li>
           <li>Custom Claude Skill Creator (coming soon)</li>
         </ul>
-        <a href="#" class="btn-primary" style="width:100%; text-align:center; display:block;" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
-        <p style="text-align:center; font-family:'Space Mono',monospace; font-size:0.72rem; color:#a09a8e; margin-top:10px; letter-spacing:0.04em;">Waitlist members get first access before Round 2 opens to the public.</p>
+        <a href="https://buy.stripe.com/dRm3cv0Dh4IT3Pw0KBbo40e" class="btn-primary" style="width:100%; text-align:center; display:block;" target="_blank" rel="noopener">Buy WAC Round 2</a>
+        <p style="text-align:center; font-family:'Space Mono',monospace; font-size:0.72rem; color:#a09a8e; margin-top:10px; letter-spacing:0.04em;">Round 2 opens August 1, 2026. Secure your spot now.</p>
       </div>
     </div>
   </div>
@@ -1371,7 +1346,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">When does Round 2 start and end?</div>
-        <div class="faq-a">Round 2 runs August 1 through October 31, 2026. The waitlist is open now, and waitlist members get first access before enrollment opens to the public.</div>
+        <div class="faq-a">Round 2 runs August 1 through October 31, 2026. Enrollment is open now.</div>
       </div>
     </div>
   </div>
@@ -1380,9 +1355,9 @@
 <!-- FINAL CTA -->
 <section class="final-cta">
   <h2>Stop Letting Your<br>Site Sit Still.</h2>
-  <p>Round 2 opens August 1, 2026 at $55. Join the waitlist for first access.</p>
-  <a href="#" class="btn-primary" style="position:relative; z-index:1;" onclick="openWaitlist();return false;">Join Round 2 Waitlist</a>
-  <p class="final-note">Round 2 opens August 1, 2026 &nbsp;·&nbsp; Waitlist members get first access</p>
+  <p>Round 2 opens August 1, 2026 at $55.</p>
+  <a href="https://buy.stripe.com/4gM7sLclZcbl1Hoctjbo40i" class="btn-primary" style="position:relative; z-index:1;" target="_blank" rel="noopener">Buy WAC Round 2</a>
+  <p class="final-note">Round 2 opens August 1, 2026 &nbsp;·&nbsp; 90-day access</p>
 </section>
 
 <!-- FOOTER -->
@@ -1465,36 +1440,7 @@
     observer.observe(el);
   });
 
-  // Waitlist modal
-  function openWaitlist() { document.getElementById('waitlistModal').classList.add('open'); }
-  function closeWaitlist() { document.getElementById('waitlistModal').classList.remove('open'); }
-  async function submitWaitlist(e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-    try {
-      await fetch('https://formspree.io/f/mqevpljw', {
-        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
-      });
-      form.innerHTML = '<p style="color:var(--accent-dim);font-weight:600;">You\'re on the list, see you August 1.</p>';
-    } catch (err) {
-      form.innerHTML = '<p style="color:#b3261e;">Something went wrong. Try again or email info@joinwac.com.</p>';
-    }
-  }
-</script>
 
-<!-- WAITLIST MODAL -->
-<div class="modal-overlay" id="waitlistModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeWaitlist()" aria-label="Close">&times;</button>
-    <h3>Join the Round 2 waitlist</h3>
-    <p>Round 2 opens August 1, 2026 at $55. Waitlist members get first access before it opens to the public.</p>
-    <form id="waitlistForm" onsubmit="submitWaitlist(event)">
-      <input type="email" name="email" placeholder="you@yoursite.com" required />
-      <button type="submit" class="modal-submit">Join Waitlist</button>
-    </form>
-    <p class="modal-note">No spam. One email when Round 2 opens.</p>
-  </div>
-</div>
+</script>
 </body>
 </html>
