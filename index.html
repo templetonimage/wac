@@ -150,6 +150,14 @@
       transition: background .2s, color .2s;
     }
     .nav-login:hover { background: var(--accent); color: var(--black); }
+    .restart-banner {
+      background: var(--black); border-bottom: 1px solid var(--border); padding: 10px 24px; text-align: center;
+    }
+    .restart-banner p {
+      font-size: .84rem; color: var(--text); display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+    }
+    .restart-banner a { color: var(--accent); font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .restart-banner a:hover { text-decoration: underline; }
 
     /* HERO */
     .hero {
@@ -825,6 +833,13 @@
     </button>
   </div>
 </nav>
+
+<!-- RESTART PACK BANNER — existing members only, window Sept 23–Oct 1 -->
+<div class="restart-banner">
+  <p>🔁 Former WAC member? Restart is free through December 31 — log in September 23–October 1 to claim it.
+    <a href="https://app.joinwac.com" target="_blank" rel="noopener">Log In to Restart →</a>
+  </p>
+</div>
 
 <!-- MOBILE MENU DRAWER -->
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
