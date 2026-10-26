@@ -77,8 +77,10 @@
   <form id="contactForm" action="https://formsubmit.co/info@joinwac.com" method="POST">
     <!-- FormSubmit config -->
     <input type="hidden" name="_subject" value="WAC 2026 — Contact Form" />
-    <input type="hidden" name="_next" value="contact.html?sent=true" />
+    <input type="hidden" name="_next" value="https://joinwac.com/contact.html?sent=true" />
     <input type="hidden" name="_captcha" value="false" />
+    <!-- Spam guard: humans never see or fill this; FormSubmit also drops any submission that has it filled -->
+    <input type="text" name="_honey" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
 
     <div class="form-group">
       <label for="name">Your Name</label>
@@ -116,7 +118,7 @@
   </div>
 
   <div class="alt-contact">
-    Prefer email directly? Reach us at <a href="/cdn-cgi/l/email-protection#d4bdbab2bb94bebbbdbaa3b5b7fab7bbb9"><span class="__cf_email__" data-cfemail="244d4a424b644e4b4d4a5345470a474b49">[email&#160;protected]</span></a><br><br>
+    Prefer email directly? Reach us at <a href="mailto:info@joinwac.com">info@joinwac.com</a><br><br>
     Interested in SMAC, the social media accountability challenge? Visit <a href="https://www.joinsmac.com" target="_blank">joinsmac.com</a>
   </div>
 </div>
@@ -125,4 +127,32 @@
   <p>© 2026 Nate Templeton · WAC 2026 &nbsp;·&nbsp; <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
 </footer>
 
-<script data-cfasync="
+<script>
+  (function () {
+    var form = document.getElementById('contactForm');
+    var msg = document.getElementById('successMsg');
+    var btn = form.querySelector('button[type="submit"]');
+    var loadedAt = Date.now();
+    var sent = false;
+    function showThanks() { form.style.display = 'none'; msg.style.display = 'block'; }
+
+    // Back from FormSubmit after a real send
+    if (window.location.search.indexOf('sent=true') !== -1) showThanks();
+
+    form.addEventListener('submit', function (e) {
+      var bot = document.getElementById('hp').value !== '' || Date.now() - loadedAt < 5000;
+      if (sent || bot) {
+        // Bots (and double submits) get the thank-you screen; nothing is sent.
+        e.preventDefault();
+        if (bot) showThanks();
+        return;
+      }
+      sent = true;
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+    });
+  })();
+</script>
+
+</body>
+</html>
