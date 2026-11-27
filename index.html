@@ -813,16 +813,67 @@
   </style>
 </head>
 <body>
-<!-- BFCM 2026 Accountability Bundle banner. Auto-hides after Mon Nov 30, 11:59 PM ET. Safe to delete after. -->
+<!-- BFCM 2026 Accountability Bundle: sticky banner + popup. Auto-hides after Mon Nov 30, 11:59 PM ET. Safe to delete after. -->
 <style>
-#bfcm-bundle-bar{display:none;background:#0d0d0d;border-bottom:2px solid #C9A84C;padding:12px 20px;text-align:center;font-family:'Inter',sans-serif;font-size:.95rem;line-height:1.5;color:#f0ece0;}
-#bfcm-bundle-bar .bb-tag{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#0d0d0d;background:#C9A84C;padding:3px 8px;border-radius:4px;margin-right:10px;white-space:nowrap;}
+#bfcm-bundle-bar{display:none;position:sticky;top:0;z-index:1000;background:#0d0d0d;border-bottom:2px solid #C9A84C;padding:11px 20px;text-align:center;font-family:'Inter',sans-serif;font-size:.95rem;line-height:1.45;color:#f0ece0;}
+#bfcm-bundle-bar .bb-tag{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#0d0d0d;background:#C9A84C;padding:3px 8px;border-radius:4px;margin-right:10px;white-space:nowrap;}
 #bfcm-bundle-bar a{color:#C9A84C;font-weight:600;text-decoration:none;white-space:nowrap;margin-left:8px;}
 #bfcm-bundle-bar a:hover{text-decoration:underline;}
-#bfcm-bundle-bar .bb-dots i{display:inline-block;width:8px;height:8px;border-radius:50%;margin:0 2px;vertical-align:middle;}
+#bfcm-bundle-bar .bb-short{display:none;}
+@media (max-width:700px){#bfcm-bundle-bar .bb-long{display:none;}#bfcm-bundle-bar .bb-short{display:inline;}#bfcm-bundle-bar{font-size:.9rem;padding:10px 14px;}}
+#bfcm-pop{display:none;position:fixed;inset:0;z-index:100000;background:rgba(13,13,13,.62);align-items:center;justify-content:center;padding:20px;}
+#bfcm-pop.open{display:flex;}
+#bfcm-pop .bp-card{position:relative;background:#fdfbf6;color:#17140f;max-width:480px;width:100%;border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35);font-family:'Inter',sans-serif;max-height:92vh;overflow-y:auto;}
+#bfcm-pop .bp-top{background:#0d0d0d;color:#C9A84C;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:14px 28px;border-bottom:2px solid #C9A84C;}
+#bfcm-pop .bp-body{padding:28px;}
+#bfcm-pop h2{font-family:'Sora',sans-serif;font-weight:700;font-size:1.75rem;line-height:1.2;margin:0 0 10px;color:#17140f;}
+#bfcm-pop p{font-size:1.02rem;line-height:1.65;margin:0 0 16px;color:#3d3a33;}
+#bfcm-pop ul{list-style:none;margin:0 0 18px;padding:0;border-top:1px solid #e3ddd0;}
+#bfcm-pop li{padding:11px 0;border-bottom:1px solid #e3ddd0;font-size:1rem;color:#17140f;}
+#bfcm-pop li span{color:#6f6a60;font-size:.9rem;margin-left:6px;}
+#bfcm-pop .bp-price{font-family:'Sora',sans-serif;font-size:1.5rem;font-weight:700;color:#17140f;margin:0 0 6px;}
+#bfcm-pop .bp-price small{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#6f6a60;font-weight:400;margin-left:8px;}
+#bfcm-pop .bp-cta{display:block;text-align:center;background:#C9A84C;color:#0d0d0d;font-weight:700;font-size:1.02rem;text-decoration:none;padding:15px 20px;border-radius:8px;margin:18px 0 12px;}
+#bfcm-pop .bp-later{display:block;width:100%;background:none;border:0;color:#6f6a60;font-size:.9rem;cursor:pointer;padding:4px;font-family:'Inter',sans-serif;}
+#bfcm-pop .bp-note{font-size:.88rem;color:#6f6a60;margin:0;}
+#bfcm-pop .bp-note a{color:#17140f;}
+#bfcm-pop .bp-x{position:absolute;top:6px;right:12px;background:none;border:0;color:#bdb6a8;font-size:28px;line-height:1;cursor:pointer;}
 </style>
-<div id="bfcm-bundle-bar"><span class="bb-tag">BFCM Weekend</span>The Accountability Bundle: SMAC + WAC + AAC, 3 months for $147. Save $34, ends Monday 11:59 PM ET.<a href="https://buy.stripe.com/fZu4gzdq30sD99Q1OFbo40t">Get the bundle &rarr;</a></div>
-<script>(function(){if(new Date()<new Date('2026-12-01T04:59:00Z')){var b=document.getElementById('bfcm-bundle-bar');if(b)b.style.display='block';}})();</script>
+<div id="bfcm-bundle-bar"><span class="bb-tag">BFCM Weekend</span><span class="bb-long">The Accountability Bundle: SMAC + WAC + AAC, 3 months for $147. Save $34, ends Monday 11:59 PM ET.</span><span class="bb-short">All 3 challenges for $147. Save $34.</span><a href="https://buy.stripe.com/fZu4gzdq30sD99Q1OFbo40t">Get the bundle &rarr;</a></div>
+<div id="bfcm-pop" role="dialog" aria-modal="true" aria-label="Accountability Bundle offer">
+  <div class="bp-card">
+    <button class="bp-x" aria-label="Close">&times;</button>
+    <div class="bp-top">BFCM Weekend · Ends Mon 11:59 PM ET</div>
+    <div class="bp-body">
+      <h2>All three challenges. One checkout.</h2>
+      <p>Lock in your January seats before public registration opens Dec 15.</p>
+      <ul>
+        <li>January SMAC round<span>social</span></li>
+        <li>January WAC round<span>website</span></li>
+        <li>3 months of AAC<span>ads</span></li>
+      </ul>
+      <div class="bp-price">$147<small>Save $34</small></div>
+      <a class="bp-cta" href="https://buy.stripe.com/fZu4gzdq30sD99Q1OFbo40t">Get the Bundle for $147</a>
+      <p class="bp-note">Join <a href="https://templetonimage.com/academy">Templeton Academy</a> by Dec 31 and the full $147 counts toward your founders membership.</p>
+      <button class="bp-later">Maybe later</button>
+    </div>
+  </div>
+</div>
+<script>(function(){
+  if(new Date()>=new Date('2026-12-01T04:59:00Z'))return;
+  var bar=document.getElementById('bfcm-bundle-bar'),pop=document.getElementById('bfcm-pop');
+  bar.style.display='block';
+  function fit(){var h=bar.offsetHeight,nav=document.querySelector('nav'),mm=document.getElementById('mobileMenu');
+    if(nav&&getComputedStyle(nav).position==='sticky')nav.style.top=h+'px';
+    if(mm&&nav)mm.style.top=(h+nav.offsetHeight)+'px';}
+  window.addEventListener('load',fit);window.addEventListener('resize',fit);fit();
+  function close(){pop.classList.remove('open');}
+  pop.querySelector('.bp-x').onclick=close;pop.querySelector('.bp-later').onclick=close;
+  pop.addEventListener('click',function(e){if(e.target===pop)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  var seen=false;try{seen=sessionStorage.getItem('bfcmPopSeen')==='1';}catch(e){}
+  if(!seen)setTimeout(function(){pop.classList.add('open');try{sessionStorage.setItem('bfcmPopSeen','1');}catch(e){}},5000);
+})();</script>
 
 
 <!-- NAV -->
@@ -845,12 +896,6 @@
   </div>
 </nav>
 
-<!-- RESTART PACK BANNER: all members, window Sept 23 to Oct 1 -->
-<div class="restart-banner">
-  <p>🔁 WAC members: restart free through December 31 and earn bonus points. Log in September 23 to October 1 to claim it.
-    <a href="https://app.joinwac.com" target="_blank" rel="noopener">Log In to Restart →</a>
-  </p>
-</div>
 
 <!-- MOBILE MENU DRAWER -->
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
